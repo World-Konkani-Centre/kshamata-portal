@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
   right: 15px;
   bottom: 15px;
-  background: #1bbd36;
+  background: #e41749;
   color: #fff;
   transition: display 0.5s ease-in-out;
   z-index: 99999;
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background: #e41749;
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo a span {
-  color: #1bbd36;
+  color: #fff;
 }
 
 #header .logo img {
@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #111;
+  color: #111111;
   transition: 0.3s;
   font-size: 13px;
   text-transform: uppercase;
@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
-  color: #1bbd36;
+  color: #fff;
 }
 
 .nav-menu .drop-down ul {
@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   -webkit-animation-duration: .5s;
   animation-duration: .5s;
-  border-top: 5px solid #1bbd36;
+  border-top: 5px solid #e41749;
 }
 
 #hero .carousel-content h2 {
@@ -409,11 +409,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   -webkit-animation-delay: 0.8s;
   animation-delay: 0.8s;
-  border: 2px solid #1bbd36;
+  border: 2px solid #e41749;
 }
 
 #hero .btn-get-started:hover {
-  background: #1bbd36;
+  background: #e41749;
   color: #fff;
   text-decoration: none;
 }
@@ -481,7 +481,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .carousel-indicators li.active {
   opacity: 1;
-  background: #1bbd36;
+  background:#e41749;
 }
 
 @media (min-width: 1024px) {
@@ -852,7 +852,7 @@ section {
   border-left: 1px solid #ececec;
 }
 
-.clients .client-logo {
+.clients .client- {
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -2139,7 +2139,7 @@ section {
 
 #footer .footer-top .footer-links ul i {
   padding-right: 2px;
-  color: #1ed33c;
+  color: #e41749;
   font-size: 18px;
   line-height: 1;
 }
@@ -2236,7 +2236,7 @@ section {
 }
 
 #footer .social-links a:hover {
-  background: #1bbd36;
+  background: #e41749;
   color: #fff;
   text-decoration: none;
 }
