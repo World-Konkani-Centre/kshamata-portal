@@ -145,7 +145,7 @@ h6 {
 }
 
 #header .logo img {
-    max-height: 40px;
+    max-height: 60px;
 }
 
 @media (max-width: 992px) {
@@ -534,7 +534,7 @@ section {
     width: 120px;
     height: 1px;
     display: inline-block;
-    background: #9ae1af;
+    background: #E51A4B;
     margin: 4px 10px;
 }
 
@@ -1482,12 +1482,17 @@ section {
     font-weight: 700;
 }
 
+#footer .logo img {
+    max-height: 60px;
+}
+
 #footer .footer-top .footer-contact p {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
     font-family: "Raleway", sans-serif;
     color: #777777;
+    font-weight: 600;
 }
 
 #footer .footer-top h4 {
