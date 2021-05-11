@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+{% include 'include/head.html' %}
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>SCOPEA - BE PREPARED !</title>
+  {% endif %}
+{% block custom_css %}{% endblock %}
+</head>
+
+<body>
+
+{% include 'include/navbar.html' %}
+
+{% block content %}
+{% endblock %}
+
+{% include 'include/footer.html' %}
+
+{% block custom_js %}{% endblock %}
+{% include 'include/notification.html' %}
+
+</body>
+
+</html>
