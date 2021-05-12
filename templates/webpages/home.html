@@ -119,31 +119,22 @@
 
         <div class="owl-carousel testimonials-carousel" data-aos="zoom-in" data-aos-delay="100">
 
+{% for item in testimonial %}
           <div class="testimonial-wrap">
             <div class="testimonial-item">
-              <img src="{% static 'assets/img/testimonials/testimonials-1.jpg' %} " class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
+              <img src="{{item.image.url}}" class="testimonial-img" alt="">
+              <h3>{{item.name}}</h3>
+              <h4>{{item.role}}</h4>
               <p>
                 <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                {{item.testimonial}}
                 <i class="bx bxs-quote-alt-right quote-icon-right"></i>
               </p>
             </div>
           </div>
+{% endfor %}
 
-          <div class="testimonial-wrap">
-            <div class="testimonial-item">
-              <img src="{% static 'assets/img/testimonials/testimonials-2.jpg' %} " class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
-              <h4>Designer</h4>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </div>
+
 
 
         </div>
