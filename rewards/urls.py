@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import *
-from django.contrib.auth import views as auth_views
 
+from .views import *
 
 urlpatterns = [
     path('give_award/',give_award , name='give_award'),
-    path('toplist/', top_list, name='top_list'),
+    path('list/', award_list, name='list'),
     path('leaderboard/',leaderboard,name="leaderboard"),
 ]
