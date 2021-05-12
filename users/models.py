@@ -17,6 +17,7 @@ class Profile(models.Model):
     batch = models.IntegerField(null=True,blank=True)
     team = models.ForeignKey(Team,on_delete=models.CASCADE,null=True,blank=True)
     college = models.CharField(max_length=100,null=True,blank=True)
+    points = models.IntegerField(default=0)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):

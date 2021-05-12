@@ -18,3 +18,4 @@ class Points(models.Model):
     heading = models.CharField(max_length=100)
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
+    show = models.BooleanField(default=False)
