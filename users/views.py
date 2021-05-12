@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm
+from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 
@@ -64,6 +65,7 @@ def my_logout(request):
     return redirect('index')
 
 
+@login_required
 def my_profile(request):
     global u_form, p_form, profile
     user = get_object_or_404(User, id=request.user.id)
@@ -91,6 +93,7 @@ def my_profile(request):
 
 
 # show all them members in the profile
+@login_required
 def members(request):
     p = Profile.objects.all()
     return render(request, 'profile/members.html', context={'profile': p})
