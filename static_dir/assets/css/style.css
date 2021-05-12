@@ -1805,3 +1805,23 @@ section {
     background: #0057FE;
     border: 2px solid #0057FE;
 }
+
+.section-message {
+    margin-bottom: 15px;
+}
+
+.section-message h2 {
+    margin-bottom: 6px;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #37423b;
+}
+
+.section-message p {
+    font-size: 22px;
+    font-weight: 350;
+    font-family: "Poppins", sans-serif;
+    color: #37423b;
+}
