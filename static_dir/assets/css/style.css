@@ -453,7 +453,7 @@ h6 {
 
 @media (max-width: 768px) {
     #hero {
-        height: 100vh;
+        height: 80vh;
     }
 }
 
@@ -493,7 +493,7 @@ h6 {
 
 @media (max-width: 768px) {
     #hero2 {
-        height: 100vh;
+        height: 80vh;
     }
 }
 
@@ -867,7 +867,7 @@ section {
     background-color: #0079c2;
     border: 1px solid #eef0ef;
     color: #f6ffff;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .courses .course-content {
@@ -898,23 +898,22 @@ section {
 .courses .register {
     font-family: "Raleway", sans-serif;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 15px;
     letter-spacing: 1px;
     display: inline-block;
-    padding: 10px 20px;
-    border-radius: 50px;
+    padding: 6px 20px;
+    border-radius: 4px;
     transition: 0.5s;
     margin-top: 15px;
     margin-bottom: 15px;
-    border: 2px solid #fff;
     color: #fff;
+    background: #E51A4B;
     float: right;
 }
 
 .courses .register:hover {
-    background: #0057FE;
-    border: 2px solid #0057FE;
+    background: #f80d44;
 }
 
 
@@ -1799,11 +1798,12 @@ section {
     margin-top: 30px;
     border: 2px solid #fff;
     color: #fff;
+    background: #E51A4B;
 }
 
 .btn-get-started:hover {
-    background: #0057FE;
-    border: 2px solid #0057FE;
+    background: #d11f49da;
+    border: 2px solid #fff;
 }
 
 .section-message {
