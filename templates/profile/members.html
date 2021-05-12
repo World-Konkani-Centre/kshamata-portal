@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_page.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="container">
+        <h2>Members</h2>
+      </div>
+    </div><!-- End Breadcrumbs -->
+
+        <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+        {% for item in profile %}
+          <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
+            <div class="member">
+              <img src="{{item.image.url}}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4><strong>Name: </strong>{{item.name}}</h4>
+                <span><strong>College: </strong>{{item.college}}</span>
+                <span><strong>Team: </strong>{{item.team}}</span>
+              </div>
+            </div>
+          </div>        
+        {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Trainers Section -->
+
+  </main><!-- End #main -->
+{% endblock content %}
