@@ -6,7 +6,8 @@ from kshamata import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webpages.urls')),
-    path('', include('users.urls'))
+    path('', include('users.urls')),
+    path('', include('rewards.urls')),
 ]
 
 

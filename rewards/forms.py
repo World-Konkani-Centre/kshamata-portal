@@ -7,14 +7,15 @@ from users.models import Team
 
 
 class MultiBadgeForm(forms.Form):
-    choices = []
-    for i in User.objects.all().order_by(Lower('profile__name')):
-        name = str(i.profile.name) + '  (' + str(i.profile.team) + ')'
-        entry = (i.id, name)
-        choices.append(entry)
-    choices = tuple(choices)
+    # choices = []
+    # for i in User.objects.all().order_by(Lower('profile__name')):
+    #     name = str(i.profile.name) + '  (' + str(i.profile.team) + ')'
+    #     entry = (i.id, name)
+    #     choices.append(entry)
+    # choices = tuple(choices)
 
-    profiles = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=choices, required=False)
+    # profiles = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=choices, required=False)
+    profiles = forms.ModelMultipleChoiceField(widget=forms.CheckboxSelectMultiple, queryset=User.objects.all().order_by(Lower('profile__name')), required=False, label='Select the Profiles')
     teams = forms.ModelChoiceField(queryset=Team.objects.all(), required=False)
     heading = forms.CharField(max_length=100)
     type = forms.ModelChoiceField(queryset=Type.objects.all())
