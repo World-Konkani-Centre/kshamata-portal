@@ -453,7 +453,7 @@ h6 {
 
 @media (max-width: 768px) {
     #hero {
-        height: 100vh;
+        height: 80vh;
     }
 }
 
@@ -493,7 +493,7 @@ h6 {
 
 @media (max-width: 768px) {
     #hero2 {
-        height: 100vh;
+        height: 80vh;
     }
 }
 
