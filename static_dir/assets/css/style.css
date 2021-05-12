@@ -445,40 +445,6 @@ h6 {
     }
 }
 
-#hero h1 {
-    margin: 0;
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 56px;
-    color: #fff;
-    font-family: "Poppins", sans-serif;
-}
-
-#hero h2 {
-    color: #eee;
-    margin: 10px 0 0 0;
-    font-size: 24px;
-}
-
-#hero .btn-get-started {
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 1px;
-    display: inline-block;
-    padding: 10px 35px;
-    border-radius: 50px;
-    transition: 0.5s;
-    margin-top: 30px;
-    border: 2px solid #fff;
-    color: #fff;
-}
-
-#hero .btn-get-started:hover {
-    background: #0057FE;
-    border: 2px solid #0057FE;
-}
-
 @media (min-width: 1024px) {
     #hero {
         background-attachment: fixed;
@@ -489,13 +455,45 @@ h6 {
     #hero {
         height: 100vh;
     }
-    #hero h1 {
-        font-size: 28px;
-        line-height: 36px;
+}
+
+#hero2 {
+    width: 100%;
+    height: 80vh;
+    background: url("../img/hero-bg2.jpg") top center;
+    background-size: cover;
+    position: relative;
+}
+
+#hero2:before {
+    content: "";
+    background: transparent;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#hero2 .container {
+    padding-top: 72px;
+}
+
+@media (max-width: 992px) {
+    #hero2 .container {
+        padding-top: 62px;
     }
-    #hero h2 {
-        font-size: 18px;
-        line-height: 24px;
+}
+
+@media (min-width: 1024px) {
+    #hero2 {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero2 {
+        height: 100vh;
     }
 }
 
@@ -618,6 +616,107 @@ section {
     .about .content .learn-more-btn {
         margin: 0 48px 0 0;
         padding: 6px 18px;
+    }
+}
+
+.about .video-box {
+    background: url("../img/about.jpg") center center no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+
+.about .play-btn {
+    width: 94px;
+    height: 94px;
+    background: radial-gradient(#E51A4B 50%, #d443655d 52%);
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: calc(50% - 47px);
+    top: calc(50% - 47px);
+    overflow: hidden;
+}
+
+.about .play-btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #fff;
+    z-index: 100;
+    transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.about .play-btn::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    -webkit-animation: pulsate-btn 2s;
+    animation: pulsate-btn 2s;
+    -webkit-animation-direction: forwards;
+    animation-direction: forwards;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: steps;
+    animation-timing-function: steps;
+    opacity: 1;
+    border-radius: 50%;
+    border: 5px solid #5e0c1f;
+    top: -15%;
+    left: -15%;
+    background: rgba(198, 16, 0, 0);
+}
+
+.about .play-btn:hover::after {
+    border-left: 15px solid #E51A4B;
+    transform: scale(20);
+}
+
+.about .play-btn:hover::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-40%) translateY(-50%);
+    width: 0;
+    height: 0;
+    border: none;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid #fff;
+    z-index: 200;
+    -webkit-animation: none;
+    animation: none;
+    border-radius: 0;
+}
+
+@-webkit-keyframes pulsate-btn {
+    0% {
+        transform: scale(0.6, 0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 0;
+    }
+}
+
+@keyframes pulsate-btn {
+    0% {
+        transform: scale(0.6, 0.6);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1, 1);
+        opacity: 0;
     }
 }
 
@@ -765,67 +864,57 @@ section {
 
 .courses .course-item {
     border-radius: 5px;
+    background-color: #0079c2;
     border: 1px solid #eef0ef;
+    color: #f6ffff;
+    margin-bottom: 10px;
 }
 
 .courses .course-content {
     padding: 15px;
 }
 
+.courses .course-content h2 {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 35px;
+    color: #f6ffff;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 .courses .course-content h3 {
-    font-weight: 700;
-    font-size: 20px;
-}
-
-.courses .course-content h3 a {
-    color: #37423b;
-    transition: 0.3s;
-}
-
-.courses .course-content h3 a:hover {
-    color: #0057FE;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #f6ffff;
+    padding: -2px;
 }
 
 .courses .course-content p {
     font-size: 14px;
-    color: #777777;
 }
 
-.courses .course-content h4 {
-    font-size: 14px;
-    background: #0057FE;
-    padding: 7px 14px;
-    color: #fff;
-    margin: 0;
-}
-
-.courses .course-content .price {
-    margin: 0;
+.courses .register {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
     font-weight: 700;
-    font-size: 18px;
-    color: #37423b;
-}
-
-.courses .trainer {
-    padding-top: 15px;
-    border-top: 1px solid #eef0ef;
-}
-
-.courses .trainer .trainer-profile img {
-    max-width: 50px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 20px;
     border-radius: 50px;
+    transition: 0.5s;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #fff;
+    color: #fff;
+    float: right;
 }
 
-.courses .trainer .trainer-profile span {
-    padding-left: 10px;
-    font-weight: 600;
-    font-size: 16px;
-    color: #5a6c60;
-}
-
-.courses .trainer .trainer-rank {
-    font-size: 18px;
-    color: #657a6d;
+.courses .register:hover {
+    background: #0057FE;
+    border: 2px solid #0057FE;
 }
 
 
@@ -927,7 +1016,7 @@ section {
 
 .testimonials .testimonial-item .quote-icon-left,
 .testimonials .testimonial-item .quote-icon-right {
-    color: #c1ecce;
+    color: #E51A4B;
     font-size: 26px;
 }
 
@@ -1696,4 +1785,23 @@ section {
     background: #4048FF;
     color: #fff;
     text-decoration: none;
+}
+
+.btn-get-started {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 35px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin-top: 30px;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-get-started:hover {
+    background: #0057FE;
+    border: 2px solid #0057FE;
 }
