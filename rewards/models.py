@@ -1,8 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
-from django.db.models import Sum
-from PIL import Image
 
 from users.models import Team
 
