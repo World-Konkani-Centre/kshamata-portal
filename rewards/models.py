@@ -6,17 +6,18 @@ from PIL import Image
 
 from users.models import Team
 
-OPTIONS = (
-    ("1", "FIRST"),
-    ("2", "SECOND"),
-    ("3", "THIRD"),
-    ("4", "NONE"),
-)
+
+class Type(models.Model):
+    name = models.CharField(max_length=30)
+    image = models.ImageField(default='default.jpg', upload_to='badge_image')
+
+    def __str__(self):
+        return f'{self.name}'
 
 
 class Points(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True)
     heading = models.CharField(max_length=100)
-    type = models.CharField(max_length=10, choices=OPTIONS, default='4')
+    type = models.ForeignKey(Type, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
