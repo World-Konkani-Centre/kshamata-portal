@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm
+from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 
@@ -30,7 +31,7 @@ def my_login(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have logged into your account!!')
-            return redirect('home')
+            return redirect('index')
 
         else:
             messages.error(request, 'Invalid Credential')
@@ -52,7 +53,8 @@ def my_register(request):
         form = UserRegisterForm()
 
     context = {
-        'form': form
+        'form': form, 
+        'title': 'Register'
     }
     return render(request, 'authorization/register.html', context)
 
@@ -63,11 +65,12 @@ def my_logout(request):
     return redirect('index')
 
 
-# single profile page for all functionality, if the pid=request.user.id, can show the form, else only the details are shown, not showing winnings as of now
-def my_profile(request, pid):
+@login_required
+def my_profile(request):
     global u_form, p_form, profile
-    user = get_object_or_404(User, id=pid)
-    if request.POST and request.user == user:
+    user = get_object_or_404(User, id=request.user.id)
+
+    if request.POST:
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
@@ -76,23 +79,21 @@ def my_profile(request, pid):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your Account has been Updated')
-            return redirect('profile', pid=pid)
-    elif request.GET and request.user.id == pid:
+            return redirect('profile')
+    else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
-    else:
-        profile = get_object_or_404(Profile, user=user)
     context = {
         'u_form': u_form,
         'p_form': p_form,
         'user': user,
-        'profile': profile,
         'title': "Profile",
     }
     return render(request, 'profile/profile.html', context=context)
 
 
 # show all them members in the profile
+@login_required
 def members(request):
     p = Profile.objects.all()
     return render(request, 'profile/members.html', context={'profile': p})
