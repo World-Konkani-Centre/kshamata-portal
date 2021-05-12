@@ -52,7 +52,8 @@ def my_register(request):
         form = UserRegisterForm()
 
     context = {
-        'form': form
+        'form': form, 
+        'title': 'Register'
     }
     return render(request, 'authorization/register.html', context)
 
