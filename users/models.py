@@ -7,7 +7,7 @@ from PIL import Image
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
-    points = models.IntegerField(default=0)
+    team_points = models.IntegerField(default=0)
     url = models.URLField()
 
 
