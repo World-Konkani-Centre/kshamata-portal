@@ -4,12 +4,13 @@ from .models import Testimonial, Website, Form
 def home(request):
     testimonial = Testimonial.objects.all()
     context = {
-        'testimonial': testimonial
+        'testimonial': testimonial,
+        'title': 'Home'
     }
     return render(request, 'webpages/home.html', context=context)
 
 def camp(request):
-    return render(request, 'webpages/camp.html')
+    return render(request, 'webpages/camp.html', context={'title': 'LEADERSHIP EXPERIENCES'})
 
 def website(request):
     websites = Website.objects.all()
