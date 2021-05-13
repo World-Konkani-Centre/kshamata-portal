@@ -13,11 +13,8 @@
           <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'camp' %}">Camps</a></li>
           {% if request.user.is_authenticated %}
-          <li><a href="{% url 'members' %}">Members</a></li>
-          <li><a href="{% url 'team-website' %}">Team website</a></li>
-          <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
-          <li><a href="{% url 'award-list' %}">Awards</a></li>
-          <li class="drop-down"><a href="{% url 'profile' %}">Account</a>
+          <li><a href="{% url 'sotp' %}">SOTP</a></li>
+          <li class="drop-down"><a href="{% url 'profile' %}">Profile</a>
             <ul>
               <li><a href="{% url 'profile' %}">Accoount</a></li>
               {% if user.is_superuser %}

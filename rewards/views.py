@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 
-from users.models import Profile, Team
+from users.models import Profile, Team,User
 from .forms import MultiBadgeForm
 from django.contrib.auth.decorators import login_required
 

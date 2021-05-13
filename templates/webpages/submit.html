@@ -1,0 +1,41 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <img src="{% static 'assets/img/submit.jpg' %}" class="img-fluid"  loading="lazy" >
+    </div><!-- End Breadcrumbs -->
+
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-message">
+          <h2>Forms Available</h2>
+          <p>Check these websites</p>
+        </div>
+
+
+        <div class="row">
+        {% for form in forms %}
+        <div class="col-lg-6 col-md-6 col-12">
+            <div class="icon-box">
+            <i class="icofont-list"></i>
+              <h4><a href="{{form.url}}" target="_blank" class="stretched-link">{{form.name}}</a></h4>
+              <p><strong>Deadline: </strong>{{form.deadline}}</p>
+              <p>{{form.description}}</p>
+            </div>
+          </div>
+        {% endfor %}
+          
+
+        </div>
+      </div>
+    </section>
+
+
+  </main><!-- End #main -->
+{% endblock content %}

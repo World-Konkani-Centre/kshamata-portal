@@ -1,0 +1,53 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block content %}
+
+  <main id="main" data-aos="fade-in">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <img src="{% static 'assets/img/banner4.jpg' %}" class="img-fluid"  loading="lazy" >
+    </div><!-- End Breadcrumbs -->
+
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="icon-box">
+            <i class="icofont-users-social"></i>
+              <h4><a href="{% url 'members' %}" class="stretched-link">Members</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+             <div class="icon-box">
+             <i class="icofont-ui-user-group"></i>
+              <h4><a href="{% url 'team-website' %}" class="stretched-link">Teams</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="icon-box">
+            <i class="icofont-flag-alt-1"></i>
+              <h4><a href="{% url 'leaderboard' %}" class="stretched-link">Leaderboard</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="icon-box">
+            <i class="icofont-certificate-alt-1"></i>
+              <h4><a href="{% url 'award-list' %}" class="stretched-link">Awards</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="icon-box">
+            <i class="icofont-list"></i>
+              <h4><a href="{% url 'submit' %}" class="stretched-link">Submit</a></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main><!-- End #main -->
+{% endblock content %}
