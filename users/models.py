@@ -5,21 +5,18 @@ from PIL import Image
 
 # creating custom UserProfile Account Manager
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, password=None):
         if not email:
             raise ValueError("Users must have email Id")
-        if not username:
-            raise ValueError("Users must have an username")
 
         user = self.model(email=self.normalize_email(email),
-                          username=username)
+                          )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username, password=None):
+    def create_superuser(self, email, password=None):
         user = self.create_user(email=self.normalize_email(email),
-                                username=username,
                                 password=password)
         user.role = 'ADM'
         user.is_admin = True
@@ -36,12 +33,12 @@ class User(AbstractUser):
         ('Male', 'Male'),
         ('Female', 'Female'),
     ]
-    batch = models.IntegerField()
-    gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male')
-    name = models.CharField(max_length=30)
+    batch = models.IntegerField(null=True)
+    gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
+    name = models.CharField(max_length=30, null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    date_of_birth = models.DateField()
-    college_name = models.CharField(max_length=100)
+    date_of_birth = models.DateField(null=True)
+    college_name = models.CharField(max_length=100, null=True)
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -49,7 +46,7 @@ class User(AbstractUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['gender', 'batch', 'name', 'image', 'date_of_birth', 'college_name']
+    REQUIRED_FIELDS = []
 
     objects = MyAccountManager()
 

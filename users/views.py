@@ -1,5 +1,4 @@
 import re
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from users.models import User
@@ -21,7 +20,7 @@ def email_check(user_cred):
 # login
 def my_login(request):
     if request.POST:
-        user_cred = request.POST['email']
+        user_cred = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, email=user_cred, password=password)
         if user is not None:
@@ -39,7 +38,7 @@ def my_login(request):
 # register
 def my_register(request):
     if request.POST:
-        form = UserRegisterForm(request.POST,request.FILES)
+        form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data.get('email')
             messages.success(request, f'Account created for {username}')
@@ -48,7 +47,7 @@ def my_register(request):
     else:
         form = UserRegisterForm()
     context = {
-        'form': form, 
+        'form': form,
         'title': 'Register'
     }
     return render(request, 'authorization/register.html', context)
@@ -66,7 +65,7 @@ def my_profile(request):
     user = get_object_or_404(User, id=request.user.id)
 
     if request.POST:
-        u_form = UserUpdateForm(request.POST,request.FILES, instance=request.user)
+        u_form = UserUpdateForm(request.POST, request.FILES, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
                                    instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
