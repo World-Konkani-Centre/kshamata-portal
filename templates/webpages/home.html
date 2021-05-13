@@ -2,14 +2,18 @@
 {% load static %}
 
 {% block content %}
-  <!-- ======= Hero Section ======= -->
+  {% comment %} <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
     </div>
-  </section><!-- End Hero -->
+  </section><!-- End Hero --> {% endcomment %}
 
     <main id="main">
-
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <img src="{% static 'assets/img/hero-bg.jpg' %}" class="img-fluid"  loading="lazy" >
+    </div><!-- End Breadcrumbs -->
+    
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container" >
