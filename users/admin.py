@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Team
+from .models import Profile, Team, User
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -16,6 +16,8 @@ class UserAdminClass(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
+
+admin.site.register(User, UserAdminClass)
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):

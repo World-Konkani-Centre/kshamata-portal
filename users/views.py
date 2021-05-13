@@ -21,6 +21,7 @@ def email_check(user_cred):
 def my_login(request):
     if request.POST:
         user_cred = request.POST['username']
+        print(user_cred)
         password = request.POST['password']
         user = authenticate(request, email=user_cred, password=password)
         if user is not None:
