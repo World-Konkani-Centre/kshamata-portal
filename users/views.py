@@ -2,7 +2,7 @@ import re
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from users.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
@@ -21,13 +21,9 @@ def email_check(user_cred):
 # login
 def my_login(request):
     if request.POST:
-        user_cred = request.POST['username']
+        user_cred = request.POST['email']
         password = request.POST['password']
-        if email_check(user_cred):
-            username = User.objects.get(email=user_cred).username
-            user = authenticate(request, username=username, password=password)
-        else:
-            user = authenticate(request, username=user_cred, password=password)
+        user = authenticate(request, email=user_cred, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, 'You have logged into your account!!')
@@ -43,15 +39,14 @@ def my_login(request):
 # register
 def my_register(request):
     if request.POST:
-        form = UserRegisterForm(request.POST)
+        form = UserRegisterForm(request.POST,request.FILES)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('email')
             messages.success(request, f'Account created for {username}')
             form.save()
             return redirect('login')
     else:
         form = UserRegisterForm()
-
     context = {
         'form': form, 
         'title': 'Register'
@@ -71,9 +66,8 @@ def my_profile(request):
     user = get_object_or_404(User, id=request.user.id)
 
     if request.POST:
-        u_form = UserUpdateForm(request.POST, instance=request.user)
+        u_form = UserUpdateForm(request.POST,request.FILES, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
-                                   request.FILES,
                                    instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
