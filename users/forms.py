@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
+from users.models import User
 from django.contrib.auth.forms import UserCreationForm
 # from django.utils.translation import gettext_lazy as _
 from .models import Profile
@@ -10,7 +10,8 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['email', 'batch', 'gender', 'name', 'image', 'date_of_birth', 'college_name', 'password1',
+                  'password2']
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -18,7 +19,7 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['email', 'batch', 'gender', 'name', 'image', 'date_of_birth', 'college_name']
 
 
 # class ProfieCreateForm(forms.ModelForm):
@@ -41,4 +42,4 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['name', 'batch', 'team','college','image']
+        fields = ['team']
