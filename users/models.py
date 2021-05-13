@@ -5,23 +5,20 @@ from PIL import Image
 
 # creating custom UserProfile Account Manager
 class MyAccountManager(BaseUserManager):
-    def create_user(self, email, username, password=None):
+    def create_user(self, email, password=None):
         if not email:
             raise ValueError("Users must have email Id")
-        if not username:
-            raise ValueError("Users must have an username")
 
-        user = self.model(email=self.normalize_email(email),
-                          username=username)
+        user = self.model(email=self.normalize_email(email))
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username, password=None):
+    def create_superuser(self, email, password=None):
         user = self.create_user(email=self.normalize_email(email),
-                                username=username,
                                 password=password)
         user.role = 'ADM'
+        user.username = email
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
@@ -36,12 +33,13 @@ class User(AbstractUser):
         ('Male', 'Male'),
         ('Female', 'Female'),
     ]
-    batch = models.IntegerField()
-    gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male')
-    name = models.CharField(max_length=30)
+    username = models.CharField(max_length=100,unique=True)
+    batch = models.IntegerField(null=True)
+    gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
+    name = models.CharField(max_length=30, null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    date_of_birth = models.DateField()
-    college_name = models.CharField(max_length=100)
+    date_of_birth = models.DateField(null=True)
+    college_name = models.CharField(max_length=100, null=True)
     date_joined = models.DateTimeField(verbose_name="date joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last login", auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -49,12 +47,14 @@ class User(AbstractUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['gender', 'batch', 'name', 'image', 'date_of_birth', 'college_name']
+    REQUIRED_FIELDS = []
 
     objects = MyAccountManager()
 
     def __str__(self):
-        return self.name
+        if self.name:
+            return self.name
+        return self.email
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
@@ -75,6 +75,7 @@ class Team(models.Model):
     name = models.CharField(max_length=100)
     team_points = models.IntegerField(default=0)
     url = models.URLField()
+    image = models.ImageField(default='default.jpg',upload_to='team_logo')
 
 
 class Profile(models.Model):
@@ -83,4 +84,7 @@ class Profile(models.Model):
     points = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'{self.user.name} Profile'
+        if self.user.name:
+            return f'{self.user.name} Profile'
+        else:
+            return f'{self.user.email} Profile'

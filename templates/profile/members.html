@@ -25,10 +25,10 @@
         {% for item in profile %}
           <div class="col-lg-3 col-md-4 d-flex align-items-stretch">
             <div class="member">
-              <img src="{{item.image.url}}" class="img-fluid" alt="">
+              <img src="{{item.user.image.url}}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4><strong>Name: </strong>{{item.name}}</h4>
-                <span><strong>College: </strong>{{item.college}}</span>
+                <h4><strong>Name: </strong>{{item.user.name}}</h4>
+                <span><strong>College: </strong>{{item.user.college_name}}</span>
                 <span><strong>Team: </strong>{{item.team}}</span>
               </div>
             </div>

@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models.functions import Lower
-from django.contrib.auth.models import User
+from users.models import User
 
 from rewards.models import Type
 from users.models import Team
