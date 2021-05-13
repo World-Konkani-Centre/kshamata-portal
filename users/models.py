@@ -5,10 +5,6 @@ from django.urls import reverse
 from django.db.models import Sum
 from PIL import Image
 
-GENDER = [
-    ('MALE', 'MALE'),
-    ('FEMALE', 'FEMALE'),
-]
 
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -19,8 +15,6 @@ class Team(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100,null=True,blank=True)
-    date_of_birth =  models.DateField(null=True, blank=True)
-    gender = models.CharField(max_length=50, choices=GENDER, null=True, blank=True)
     batch = models.IntegerField(null=True,blank=True)
     team = models.ForeignKey(Team,on_delete=models.CASCADE,null=True,blank=True)
     college = models.CharField(max_length=100,null=True,blank=True)
