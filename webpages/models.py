@@ -17,3 +17,13 @@ class Website(models.Model):
 
     def __str__(self):
         return f'{self.name} Website'
+
+
+class Form(models.Model):
+    name = models.CharField(max_length=50, help_text='Form name')
+    url = models.URLField(help_text='Form URL')
+    deadline = models.CharField(max_length=100, help_text='Enter deadline in human readbale format for ex. 12/2 8:00 PM')
+    description = models.TextField(help_text='A brief description on Form')
+
+    def __str__(self):
+        return f'{self.name} Form'  
