@@ -9,8 +9,7 @@ class MyAccountManager(BaseUserManager):
         if not email:
             raise ValueError("Users must have email Id")
 
-        user = self.model(email=self.normalize_email(email),
-                          )
+        user = self.model(email=self.normalize_email(email))
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -19,6 +18,7 @@ class MyAccountManager(BaseUserManager):
         user = self.create_user(email=self.normalize_email(email),
                                 password=password)
         user.role = 'ADM'
+        user.username = email
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
@@ -33,6 +33,7 @@ class User(AbstractUser):
         ('Male', 'Male'),
         ('Female', 'Female'),
     ]
+    username = models.CharField(max_length=100,unique=True)
     batch = models.IntegerField(null=True)
     gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
     name = models.CharField(max_length=30, null=True)
@@ -51,7 +52,9 @@ class User(AbstractUser):
     objects = MyAccountManager()
 
     def __str__(self):
-        return self.name
+        if self.name:
+            return self.name
+        return self.email
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
@@ -72,6 +75,7 @@ class Team(models.Model):
     name = models.CharField(max_length=100)
     team_points = models.IntegerField(default=0)
     url = models.URLField()
+    image = models.ImageField(default='default.jpg',upload_to='team_logo')
 
 
 class Profile(models.Model):
@@ -80,4 +84,7 @@ class Profile(models.Model):
     points = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'{self.user.name} Profile'
+        if self.user.name:
+            return f'{self.user.name} Profile'
+        else:
+            return f'{self.user.email} Profile'
