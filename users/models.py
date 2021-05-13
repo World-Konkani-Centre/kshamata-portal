@@ -75,6 +75,7 @@ class Team(models.Model):
     name = models.CharField(max_length=100)
     team_points = models.IntegerField(default=0)
     url = models.URLField()
+    image = models.ImageField(default='default.jpg',upload_to='team_logo')
 
 
 class Profile(models.Model):
