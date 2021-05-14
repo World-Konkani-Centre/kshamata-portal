@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Testimonial, Website, Form
 
 def home(request):
     testimonial = Testimonial.objects.all()
+
     context = {
         'testimonial': testimonial,
         'title': 'Home'
@@ -22,3 +24,9 @@ def submit(request):
 
 def sotp(request):
     return render(request, 'webpages/sotp.html', context={'title': 'SOTP'})
+
+
+
+def camp_register(request):
+    messages.error(request, 'Please login to register for these camps.')
+    return redirect('login')

@@ -26,7 +26,11 @@
                 <h2>SOTP</h2>
                 <h3>SCHOLARS ORIENTATION AND TRAINING PROGRAMME</h3>
                 <p>An initiation into the four-year development model for all scholarship participants to accomplish while in attendance. SOTP is a Three Day Residential Program for orientation towards Vision-TVM and a robust training package on Personal Effectiveness.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -38,7 +42,11 @@
                     <h2>SLSIP</h2>
                     <h3>SCHOLARS LANGUAGE SKILLS IMMERSIVE PROGRAMME</h3>
                     <p>Aimed at spoken and written communication skills as well as proficiency in English and Konkani. This program involves interactive classroom and labs activity.</p>
-                    <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
                 </div>
                 </div>
             </div> <!-- End Course Item-->
@@ -50,7 +58,11 @@
                 <h2>GMCS</h2>
                 <h3>GENERAL MANAGEMENT AND COMMUNICATION SKILLS</h3>
                 <p>A three-day residential program focusing on General Management, Team Building, and Effective Communication Skills. It also involves individual grooming and mentorship.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -62,7 +74,11 @@
                 <h2>IPRS</h2>
                 <h3>INTERPERSONAL RELATIONSHIP SKILLS TRAINING</h3>
                 <p>A program that helps one to understand the concepts, especially skills and attributes associated with emotional intelligence or the ability to be able to understand and manage emotions.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -74,7 +90,11 @@
                 <h2>SPPT</h2>
                 <h3>SCHOLARS PLACEMENT PREPARATION TRAINING</h3>
                 <p>A three Days Residential Program focusing on preparing the scholars for placements. Sessions include Interview Skills and Aptitude Test Coaching. Access to a premier Aptitude test module to sharpen their logical skills provided.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -86,7 +106,11 @@
                 <h2>SORT</h2>
                 <h3>SCHOLARS ORGANISATIONAL READYNESS TRAINING</h3>
                 <p>A program aimed at equipping scholars with skills required for impactful entry into the corporate world. It gives the scholars an edge in understanding the workspace better.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -98,7 +122,11 @@
                 <h2>KSHITIJ</h2>
                 <h3>SKILL DEVELOPMENT CAMPS</h3>
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore. Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -110,7 +138,11 @@
                 <img src="{% static 'assets/img/camp/ugetin.svg' %}" class="img-fluid pb-2" width="80%">
                 {% comment %} <h3>SKILL DEVELOPMENT CAMPS</h3> {% endcomment %}
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore. Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
@@ -122,7 +154,11 @@
                 <img src="{% static 'assets/img/camp/ugetin.svg' %}" class="img-fluid pb-2" width="80%">
                 <h3>Diamond</h3>
                 <p>Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore. Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <a href="courses.html" class="register">register</a>
+                {% if not request.user.is_authenticated %}
+                  <a href="{% url 'camp-register' %}" class="register">register</a>
+                {% else %}
+                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                {% endif %}
               </div>
             </div>
           </div> <!-- End Course Item-->
