@@ -33,7 +33,7 @@ class User(AbstractUser):
         ('Male', 'Male'),
         ('Female', 'Female'),
     ]
-    username = models.CharField(max_length=100,unique=True)
+    username = models.CharField(max_length=100, unique=True)
     batch = models.IntegerField(null=True)
     gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
     name = models.CharField(max_length=30, null=True)
@@ -53,8 +53,9 @@ class User(AbstractUser):
 
     def __str__(self):
         if self.name:
-            return self.name
-        return self.email
+            return f'{self.name}-{self.email}'
+        else:
+            return self.email
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
@@ -75,7 +76,10 @@ class Team(models.Model):
     name = models.CharField(max_length=100)
     team_points = models.IntegerField(default=0)
     url = models.URLField()
-    image = models.ImageField(default='default.jpg',upload_to='team_logo')
+    image = models.ImageField(default='default.jpg', upload_to='team_logo')
+
+    def __str__(self):
+        return self.name
 
 
 class Profile(models.Model):

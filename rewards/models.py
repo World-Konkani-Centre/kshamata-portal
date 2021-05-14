@@ -19,3 +19,11 @@ class Points(models.Model):
     type = models.ForeignKey(Type, on_delete=models.CASCADE)
     points = models.IntegerField(default=0)
     show = models.BooleanField(default=False)
+
+    def __str__(self):
+        if self.user:
+            if self.user.name:
+                return f'{self.user.name}-{self.points}'
+            else:
+                return f'{self.user}-{self.points}'
+        return f'{self.team}-{self.points}'
