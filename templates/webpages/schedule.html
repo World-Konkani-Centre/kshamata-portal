@@ -13,19 +13,24 @@
     <section id="services" class="services about">
       <div class="container">
       {% include 'include/heading.html' %}
+
       <div class="section-message">
           <h2>SCHEDULE</h2>
-        </div>
+      </div>
 
 
 
       </div>
     </section>
 
+ 
         <!-- ======= Schedule Section ======= -->
     <section id="schedule" class="section-with-bg services">
+
+     
+
       <div class="container" data-aos="fade-up">
- 
+      {% if display  or user.is_superuser%}
         <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item">
             <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Day 1</a>
@@ -268,12 +273,22 @@
           <!-- End Schdule Day 2 -->
 
         </div>
+      {% else %}
+           <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >    
+  
+      {% endif %}
 
       {% include 'include/buttons.html' %}
 
       </div>
 
+
     </section><!-- End Schedule Section -->
+
+  
+
+
+
 
 
   </main><!-- End #main -->

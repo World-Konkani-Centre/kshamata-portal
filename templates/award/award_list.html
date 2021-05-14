@@ -19,6 +19,8 @@
           <h2>AWARDS</h2>
         </div>
 
+      {% if display  or user.is_superuser%}
+
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-6 col-12 order-1">
             <div class="table-responsive">
@@ -89,6 +91,11 @@
           </div>
 
         </div>
+
+      {% else %}
+           <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >    
+  
+      {% endif %}
       {% include 'include/buttons.html' %}
 
       </div>
