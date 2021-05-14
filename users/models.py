@@ -53,8 +53,9 @@ class User(AbstractUser):
 
     def __str__(self):
         if self.name:
-            return self.name
-        return self.email
+            return f'{self.name}-{self.email}'
+        else:
+            return self.email
 
     def has_perm(self, perm, obj=None):
         return self.is_admin

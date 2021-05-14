@@ -14,6 +14,8 @@ def update_team_points(sender, instance, created, **kwargs):
             if team:
                 team.team_points = team.team_points + instance.points
                 team.save()
+                instance.user.profile.points = instance.user.profile.points + instance.points
+                instance.user.profile.save()
         elif instance.team:
             team = instance.team
             team.team_points = team.team_points + instance.points

@@ -21,7 +21,7 @@
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-6 col-12 order-1">
-              <h2>Team leaderboard</h2>
+              <h2>Overall Team leaderboard</h2>
             <div class="table-responsive">
               <table class="table table-hover table-dark">
                 <thead>
@@ -45,7 +45,7 @@
           </div>
 
           <div class="col-lg-6 col-12 order-1">
-              <h2>Individual Leaderboard</h2>
+              <h2>Overall Individual Leaderboard</h2>
             <div class="table-responsive">
               <table class="table table-hover table-dark">
                 <thead>
@@ -71,6 +71,59 @@
           </div>
 
         </div>
+
+
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
+          {% if team_profiles %}
+          <div class="col-lg-6 col-12 order-1">
+              <h2>{{ team_details.name }} - Individual details</h2>
+            <div class="table-responsive">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                      <th scope="col">Team ranking</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for row in team_profiles %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ row.user.name }}</td>
+                    <td>{{ row.points }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+{% endif %}
+      {% if team_details %}
+          <div class="col-lg-6 col-12 order-1">
+              <h2>{{ team_details.name }} - details</h2>
+            <div class="table-responsive">
+              <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Team</th>
+                    <th scope="col">Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{ team_details.name }}</td>
+                      <td>{{ team_details.team_points }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+      {% endif %}
+
+        </div>
+
+
 
       </div>
     </section><!-- End Trainers Section -->

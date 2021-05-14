@@ -46,6 +46,13 @@ def award_list(request):
 
 # show the leaderboard of teams and profiles use points in corresponding models to order
 def leaderboard(request):
+    team_profiles = ""
+    team_points = ""
     profiles = Profile.objects.filter().order_by('-points')[:10]
     teams = Team.objects.filter().order_by("-team_points")[:10]
-    return render(request, 'award/leaderboard.html', {'profiles': profiles, 'teams': teams})
+    if request.user.profile.team:
+        team_profiles = Profile.objects.filter(team=request.user.profile.team).order_by('-points')
+        team_points = Team.objects.get(id=request.user.profile.team.id)
+
+    return render(request, 'award/leaderboard.html',
+                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points})
