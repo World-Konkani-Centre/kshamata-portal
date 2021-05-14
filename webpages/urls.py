@@ -7,5 +7,6 @@ urlpatterns = [
     path('teams', website, name='team-website'),
     path('submit/', submit, name='submit'),
     path('sotp', sotp, name='sotp'),
-    path('camp-register', camp_register, name='camp-register')
+    path('camp-register', camp_register, name='camp-register'),
+    path('schedule/', schedule, name='schedule'),
 ]

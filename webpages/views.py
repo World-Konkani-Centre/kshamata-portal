@@ -14,6 +14,9 @@ def home(request):
 def camp(request):
     return render(request, 'webpages/camp.html', context={'title': 'LEADERSHIP EXPERIENCES'})
 
+def schedule(request):
+    return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE'})
+
 def website(request):
     websites = Website.objects.all()
     return render(request, 'webpages/website.html', context={'title': 'Team Websites', 'websites': websites})
