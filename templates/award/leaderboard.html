@@ -20,7 +20,9 @@
           <h2>LEADERBOARD</h2>
         </div>
 
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+      {% if display  or user.is_superuser%}
+
+      <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-6 col-12 order-1">
             <div class="card mb-4 p-0">
               <div class="card-header py-3">
@@ -111,7 +113,7 @@
               </table>
             </div>
           </div>
-{% endif %}
+      {% endif %}
       {% if team_details %}
           <div class="col-lg-6 col-12 order-1">
               <h2>{{ team_details.name }} - details</h2>
@@ -134,7 +136,13 @@
           </div>
       {% endif %}
 
-        </div>
+    </div>
+
+    {% else %}
+
+      <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >
+    
+    {% endif %}
 
       {% include 'include/buttons.html' %}
 

@@ -90,4 +90,4 @@ def my_profile(request):
 @login_required
 def members(request):
     p = Profile.objects.all()
-    return render(request, 'profile/members.html', context={'profile': p})
+    return render(request, 'profile/members.html', context={'profile': p, 'display': False})

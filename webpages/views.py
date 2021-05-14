@@ -20,22 +20,21 @@ def camp(request):
 
 @login_required
 def schedule(request):
-    return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE'})
+    return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE', 'display': False})
 
 @login_required
 def website(request):
     websites = Website.objects.all()
-    return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites})
+    return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites, 'display': False})
 
 @login_required
 def submit(request):
     form = Form.objects.all()
-    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'forms': form})
+    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'forms': form , 'display': False})
 
 @login_required
 def sotp(request):
-    return render(request, 'webpages/sotp.html', context={'title': 'SOTP'})
-
+    return render(request, 'webpages/sotp.html', context={'title': 'SOTP', 'display': False})
 
 
 def camp_register(request):

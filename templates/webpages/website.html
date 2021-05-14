@@ -19,6 +19,8 @@
           <p>Click on the Team Logos to visit Team Websites</p>
         </div>
 
+    {% if display  or user.is_superuser%}
+
         <div class="row" data-aos="zoom-in" data-aos-delay="10">
 
         {% for page in websites %}
@@ -35,6 +37,9 @@
         {% endfor %}
 
         </div>
+    {% else %}
+      <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >
+    {% endif %}
 
 
             {% include 'include/buttons.html' %}
