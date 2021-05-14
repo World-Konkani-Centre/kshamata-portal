@@ -2,15 +2,14 @@ from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect
 
-from users.models import Profile, Team,User
+from users.models import Profile, Team, User
 from .forms import MultiBadgeForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-# give award, preferably like multi badge
 from .models import Points
 
 
@@ -23,24 +22,18 @@ def give_award(request):
         else:
             form = MultiBadgeForm(request.POST)
             if form.is_valid():
-                profiles = form.cleaned_data.get('profiles')
+                users = form.cleaned_data.get('users')
                 teams = form.cleaned_data.get('teams')
                 heading = form.cleaned_data.get('heading')
-                type = form.cleaned_data.get('type')
+                pr_type = form.cleaned_data.get('type')
                 points = form.cleaned_data.get('points')
                 show = form.cleaned_data.get('show')
-                # if len(profiles) != 0:
-                #     for id in profiles:
-                #         Points.objects.create(user=get_object_or_404(User, id=int(id)), heading=heading, type=type,
-                #                               points=points, show=show)
-                # elif teams:
-                #     Points.objects.create(team=teams, heading=heading, type=type, points=points, show=show)
-                # print(id)
-                # print(teams)
-                # print(heading)
-                # print(type)
-                # print(points)
-                # print(show)
+                if len(users) != 0:
+                    for user in users:
+                        Points.objects.create(user=user, heading=heading, type=pr_type, points=points, show=show)
+                elif teams:
+                    Points.objects.create(team=teams, heading=heading, type=pr_type, points=points, show=show)
+                return redirect('give_award')
     else:
         raise Http404()
 
@@ -53,6 +46,13 @@ def award_list(request):
 
 # show the leaderboard of teams and profiles use points in corresponding models to order
 def leaderboard(request):
-    profiles = Profile.objects.filter().order_by('-points')
-    teams = Team.objects.filter().order_by("-team_points")
-    return render(request, 'award/leaderboard.html', {'profiles': profiles, 'teams': teams})
+    team_profiles = ""
+    team_points = ""
+    profiles = Profile.objects.filter().order_by('-points')[:10]
+    teams = Team.objects.filter().order_by("-team_points")[:10]
+    if request.user.profile.team:
+        team_profiles = Profile.objects.filter(team=request.user.profile.team).order_by('-points')
+        team_points = Team.objects.get(id=request.user.profile.team.id)
+
+    return render(request, 'award/leaderboard.html',
+                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points})
