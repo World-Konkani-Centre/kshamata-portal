@@ -7,21 +7,25 @@
   <main id="main" data-aos="fade-in">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs text-breadcrumbs">
-      <div class="container">
-        <h2>Login</h2>
-      </div>
+    <div class="breadcrumbs">
+        <img src="{% static 'assets/img/registration.jpg' %}" class="img-fluid"  loading="lazy" >
     </div><!-- End Breadcrumbs -->
 
         <!-- ======= Trainers Section ======= -->
     <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
 
+        <div class="section-message">
+          <h2>Login</h2>
+          {% comment %} <p>KSHAMATA Registered users</p> {% endcomment %}
+        </div>
+
+
   <div class="col-lg-8 offset-lg-2 col-12">
     <form action="" method="POST">
       {% csrf_token %}
       <div class="form-group">
-        <input type="text" class="form-control shadow-none" name="username" placeholder="Enter Username or Email" required=""/>
+        <input type="text" class="form-control shadow-none" name="username" placeholder="Enter Email" required=""/>
       </div>
       <div class="form-group">
         <input type="password" class="form-control shadow-none" name="password" placeholder="Password" required=""/>

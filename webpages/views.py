@@ -1,15 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Testimonial, Website, Form
 
 def home(request):
     testimonial = Testimonial.objects.all()
+
     context = {
-        'testimonial': testimonial
+        'testimonial': testimonial,
+        'title': 'Home'
     }
     return render(request, 'webpages/home.html', context=context)
 
 def camp(request):
-    return render(request, 'webpages/camp.html')
+    return render(request, 'webpages/camp.html', context={'title': 'LEADERSHIP EXPERIENCES'})
 
 def website(request):
     websites = Website.objects.all()
@@ -21,3 +24,9 @@ def submit(request):
 
 def sotp(request):
     return render(request, 'webpages/sotp.html', context={'title': 'SOTP'})
+
+
+
+def camp_register(request):
+    messages.error(request, 'Please login to register for these camps.')
+    return redirect('login')
