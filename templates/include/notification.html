@@ -1,27 +1,27 @@
-<script type="text/javascript">
-      $(document).ready(function () {
-      toastr.options = {
-    "closeButton": true,
-    "progressBar": true,
-    "debug": false,
-    "newestOnTop": false,
-    "positionClass": "toast-top-right",
-    "preventDuplicates": false,
-    "onclick": null,
-    "showDuration": "400",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
-  }
-          {% if messages %}
-              {% for message in messages %}
-                  toastr["{{message.tags}}"]("{{ message }}");
-              {% endfor %}
-          {% endif %}
+{% load static %}
+<script>
+function show_toast(){
+  $.toast({
+    title: 'Error',
+    subtitle: 'Just now',
+    content: 'You are not eligible to register for this Camp!!',
+    type: 'error',
+    delay: 10000
+  });
+}
 
-      });
+{% if messages %}
+{% for message in messages %}
+  $.toast({
+    title: '{{message.tags}}',
+    subtitle: 'Just now',
+    content: '{{ message }}',
+    type: '{{message.tags}}',
+    delay: 10000
+  });
+{% endfor %}
+{% endif %}
+            
+              
+          
 </script>
