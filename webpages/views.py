@@ -10,7 +10,7 @@ def home(request):
 
     context = {
         'testimonial': testimonial,
-        'title': 'Home'
+        'title': 'HOME'
     }
     return render(request, 'webpages/home.html', context=context)
 
@@ -25,12 +25,12 @@ def schedule(request):
 @login_required
 def website(request):
     websites = Website.objects.all()
-    return render(request, 'webpages/website.html', context={'title': 'Team Websites', 'websites': websites})
+    return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites})
 
 @login_required
 def submit(request):
     form = Form.objects.all()
-    return render(request, 'webpages/submit.html', context={'title': 'Submit forms', 'forms': form})
+    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'forms': form})
 
 @login_required
 def sotp(request):
