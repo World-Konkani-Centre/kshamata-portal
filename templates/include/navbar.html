@@ -18,7 +18,7 @@
           <li><a href="{% url 'sotp' %}">SOTP</a></li>
           <li class="drop-down"><a href="{% url 'profile' %}">Profile</a>
             <ul>
-              <li><a href="{% url 'profile' %}">Acount</a></li>
+              <li><a href="{% url 'profile' %}">Account</a></li>
               {% if user.is_superuser %}
               <li><a href="{% url 'give_award' %}">Give a award</a></li>
               <li><a href="/admin">Admin Site</a></li>
