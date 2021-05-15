@@ -42,7 +42,7 @@ def my_register(request):
         form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data.get('email')
-            messages.success(request, f'Account created for {username}')
+            messages.success(request, f'You have successfully registered for SOTP 2021\nYou can login now with your email: {username}')
             form.save()
             return redirect('login')
     else:
