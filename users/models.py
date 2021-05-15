@@ -9,9 +9,8 @@ class MyAccountManager(BaseUserManager):
         if not email:
             raise ValueError("Users must have email Id")
 
-        user = self.model(email=self.normalize_email(email))
+        user = self.model(email=self.normalize_email(email),username=self.normalize_email(email))
         user.set_password(password)
-        user.username = email
         user.save(using=self._db)
         return user
 
@@ -19,7 +18,7 @@ class MyAccountManager(BaseUserManager):
         user = self.create_user(email=self.normalize_email(email),
                                 password=password)
         user.role = 'ADM'
-        user.username = email
+        user.username = self.normalize_email(email)
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
@@ -34,7 +33,7 @@ class User(AbstractUser):
         ('Male', 'Male'),
         ('Female', 'Female'),
     ]
-    username = models.CharField(max_length=100, unique=True)
+    username = models.CharField(max_length=100, unique=False,null=True,blank=True)
     batch = models.IntegerField(null=True)
     gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
     name = models.CharField(max_length=30, null=True)
@@ -66,6 +65,7 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         super(User, self).save(*args, **kwargs)
+        self.username = self.email
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
             output_size = (300, 300)
