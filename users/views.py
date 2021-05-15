@@ -27,7 +27,7 @@ def my_login(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'You have logged into your account!!')
-            return redirect('index')
+            return redirect('sotp')
 
         else:
             messages.error(request, 'Invalid Credential')
@@ -90,4 +90,4 @@ def my_profile(request):
 @login_required
 def members(request):
     p = Profile.objects.all()
-    return render(request, 'profile/members.html', context={'profile': p})
+    return render(request, 'profile/members.html', context={'profile': p, 'display': False})

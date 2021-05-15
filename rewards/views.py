@@ -41,7 +41,7 @@ def give_award(request):
 # display the list of points given including only top 3
 def award_list(request):
     awards = Points.objects.filter(show=False)
-    return render(request, 'award/award_list.html', {"awards": awards})
+    return render(request, 'award/award_list.html', {"awards": awards, 'display': False})
 
 
 # show the leaderboard of teams and profiles use points in corresponding models to order
@@ -55,4 +55,4 @@ def leaderboard(request):
         team_points = Team.objects.get(id=request.user.profile.team.id)
 
     return render(request, 'award/leaderboard.html',
-                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points})
+                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points, 'display': False})

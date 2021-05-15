@@ -14,49 +14,11 @@
         <!-- ======= Trainers Section ======= -->
     <section id="trainers" class="trainers services">
       <div class="container" data-aos="fade-up">
+          {% include 'include/heading.html' %}
+
 
         <div class="section-message">
-          <h2>Members</h2>
-          <p>KSHAMATA Registered users</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-users-social"></i>
-              <h4><a href="{% url 'members' %}" class="stretched-link">Members</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-             <div class="icon-box">
-             <i class="icofont-ui-user-group"></i>
-              <h4><a href="{% url 'team-website' %}" class="stretched-link">Teams</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-flag-alt-1"></i>
-              <h4><a href="{% url 'leaderboard' %}" class="stretched-link">Leaderboard</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-certificate-alt-1"></i>
-              <h4><a href="{% url 'award-list' %}" class="stretched-link">Awards</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-list"></i>
-              <h4><a href="{% url 'submit' %}" class="stretched-link">Submit</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-clock-time"></i>
-              <h4><a href="{% url 'schedule' %}" class="stretched-link">Schedule</a></h4>
-            </div>
-          </div>
+          <h2>CAMPERS</h2>
         </div>
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -75,6 +37,7 @@
         {% endfor %}
 
         </div>
+      {% include 'include/buttons.html' %}
 
       </div>
     </section><!-- End Trainers Section -->

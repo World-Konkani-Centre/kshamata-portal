@@ -12,53 +12,14 @@
 
     <section id="services" class="services">
       <div class="container">
+      {% include 'include/heading.html' %}
 
         <div class="section-message">
-          <h2>Forms Available</h2>
-          <p>Check these websites</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-users-social"></i>
-              <h4><a href="{% url 'members' %}" class="stretched-link">Members</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-             <div class="icon-box">
-             <i class="icofont-ui-user-group"></i>
-              <h4><a href="{% url 'team-website' %}" class="stretched-link">Teams</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-flag-alt-1"></i>
-              <h4><a href="{% url 'leaderboard' %}" class="stretched-link">Leaderboard</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-certificate-alt-1"></i>
-              <h4><a href="{% url 'award-list' %}" class="stretched-link">Awards</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-list"></i>
-              <h4><a href="{% url 'submit' %}" class="stretched-link">Submit</a></h4>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-clock-time"></i>
-              <h4><a href="{% url 'schedule' %}" class="stretched-link">Schedule</a></h4>
-            </div>
-          </div>
+          <h2>SUBMIT</h2>
         </div>
 
 
-
+      {% if display  or user.is_superuser%}
         <div class="row">
         {% for form in forms %}
         <div class="col-lg-6 col-md-6 col-12">
@@ -70,9 +31,13 @@
             </div>
           </div>
         {% endfor %}
-          
-
         </div>
+      {% else %}
+        <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >
+      {% endif %}
+
+        {% include 'include/buttons.html' %}
+
       </div>
     </section>
 
