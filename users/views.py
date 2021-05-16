@@ -89,5 +89,5 @@ def my_profile(request):
 # show all them members in the profile
 @login_required
 def members(request):
-    p = Profile.objects.all()
+    p = Profile.objects.all().order_by('user__name')
     return render(request, 'profile/members.html', context={'profile': p, 'display': False})
