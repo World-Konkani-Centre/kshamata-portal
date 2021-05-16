@@ -28,9 +28,13 @@
             <div class="member text-center">
               <img src="{{item.user.image.url}}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4><strong>Name: </strong>{{item.user.name}}</h4>
-                <span><strong>College: </strong>{{item.user.college_name}}</span>
-                <span><strong>Team: </strong>{{item.team}}</span>
+                <h4>{{item.user.name}}</h4>
+                <span>{{item.user.college_name}}</span>
+                  {% if item.team %}
+                <span>Team {{item.team}}</span>
+                  {% else %}
+                      <span><strong>Team : </strong>{{item.team}}</span>
+                  {% endif %}
               </div>
             </div>
           </div>        
