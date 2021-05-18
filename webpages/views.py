@@ -1,8 +1,9 @@
 from users.views import my_login
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Testimonial, Website, Form
+from .models import Testimonial, Website, Form, Post
 from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
 
 
 def home(request):
@@ -40,3 +41,30 @@ def sotp(request):
 def camp_register(request):
     messages.error(request, 'Please login to register for these camps.')
     return redirect('login')
+
+
+def blog(request):
+    post = Post.objects.all()
+    context = {
+        'queryset': post,
+        'title': 'WISHES'
+    }
+    return render(request, 'blog/blog.html', context)
+
+
+def blog_single(request, id):
+    post = get_object_or_404(Post, id=id)
+    form = CommentForm(request.POST or None)
+    if request.POST:
+        if form.is_valid():
+            form.instance.user = request.user
+            form.instance.post = post
+            form.save()
+            messages.success(request, 'Your Message is Posted')
+            return redirect(request.META['HTTP_REFERER'])
+
+    context = {
+        'post': post,
+        'form': form,
+    }
+    return render(request, 'blog/blog-single.html', context=context)

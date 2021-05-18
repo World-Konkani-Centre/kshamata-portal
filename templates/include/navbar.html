@@ -15,6 +15,7 @@
           {% if request.user.is_authenticated %}
           <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'camp' %}">Camps</a></li>
+          <li><a href="{% url 'blog' %}">Wishes</a></li>
           <li><a href="{% url 'sotp' %}">SOTP</a></li>
           <li class="drop-down"><a href="{% url 'profile' %}">Profile</a>
             <ul>
