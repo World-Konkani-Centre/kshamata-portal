@@ -9,4 +9,6 @@ urlpatterns = [
     path('sotp', sotp, name='sotp'),
     path('camp-register', camp_register, name='camp-register'),
     path('schedule/', schedule, name='schedule'),
+    path('wishes/<id>', blog_single, name='blog-detail'),
+    path('wishes', blog, name='blog'),
 ]
