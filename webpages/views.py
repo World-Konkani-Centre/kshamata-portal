@@ -26,7 +26,7 @@ def schedule(request):
 @login_required
 def website(request):
     websites = Website.objects.all()
-    return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites, 'display': False})
+    return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites, 'display': True})
 
 @login_required
 def submit(request):
