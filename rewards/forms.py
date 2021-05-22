@@ -12,4 +12,4 @@ class MultiBadgeForm(forms.Form):
     type = forms.ModelChoiceField(queryset=Type.objects.all())
     points = forms.IntegerField(required=True)
     show = forms.BooleanField(required=False, help_text="Select only for top 3, which will be shown in the awards list")
-    users = forms.ModelMultipleChoiceField(queryset=User.objects.all(), required=False)
+    users = forms.ModelMultipleChoiceField(queryset=User.objects.all().order_by(Lower('name')), required=False)
