@@ -9,7 +9,7 @@ class MyAccountManager(BaseUserManager):
         if not email:
             raise ValueError("Users must have email Id")
 
-        user = self.model(email=self.normalize_email(email),username=self.normalize_email(email))
+        user = self.model(email=self.normalize_email(email), username=self.normalize_email(email))
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -33,7 +33,7 @@ class User(AbstractUser):
         ('Male', 'Male'),
         ('Female', 'Female'),
     ]
-    username = models.CharField(max_length=100, unique=False,null=True,blank=True)
+    username = models.CharField(max_length=100, unique=False, null=True, blank=True)
     batch = models.IntegerField(null=True)
     gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
     name = models.CharField(max_length=30, null=True)
@@ -83,8 +83,15 @@ class Team(models.Model):
         return self.name
 
 
+ROLE_CHOICES2 = [
+    ('Committee', 'Committee'),
+    ('Camper', 'Camper'),
+]
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.CharField(max_length=30, choices=ROLE_CHOICES2, default='Camper', null=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True)
     points = models.IntegerField(default=0)
 

@@ -42,7 +42,8 @@ def my_register(request):
         form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data.get('email')
-            messages.success(request, f'You have successfully registered for SOTP 2021. You can login now with your email: {username}')
+            messages.success(request,
+                             f'You have successfully registered for SOTP 2021. You can login now with your email: {username}')
             form.save()
             return redirect('login')
     else:
@@ -89,5 +90,6 @@ def my_profile(request):
 # show all them members in the profile
 @login_required
 def members(request):
-    p = Profile.objects.all().order_by('user__name')
-    return render(request, 'profile/members.html', context={'profile': p, 'display': False})
+    p_1 = Profile.objects.filter(role='Committee').order_by('user__name')
+    p_2 = Profile.objects.filter(role='Camper').order_by('user__name')
+    return render(request, 'profile/members.html', context={'committee': p_1, 'campers': p_2, 'display': False})
