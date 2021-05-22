@@ -21,7 +21,7 @@
             <ul>
               <li><a href="{% url 'profile' %}">Account</a></li>
               {% if user.is_superuser %}
-              <li><a href="{% url 'give_award' %}">Give a award</a></li>
+              <li><a href="{% url 'give_award' %}">Give an award</a></li>
               <li><a href="/admin">Admin Site</a></li>
               {% endif %}
               <li><a href="{% url 'password_reset' %}">Reset Password</a></li>
