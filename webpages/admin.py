@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Testimonial, Website, Form, Post, Comment
+from .models import Testimonial, Website, Event, Post, Comment
 # Register your models here.
 
 @admin.register(Testimonial)
@@ -11,8 +11,8 @@ class TestimonialAdmin(admin.ModelAdmin):
 class WebsiteAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Form)
-class FormAdmin(admin.ModelAdmin):
+@admin.register(Event)
+class EventAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Comment)

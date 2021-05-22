@@ -1,7 +1,7 @@
 from users.views import my_login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Testimonial, Website, Form, Post
+from .models import Testimonial, Website, Event, Post
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 
@@ -30,8 +30,8 @@ def website(request):
 
 @login_required
 def submit(request):
-    form = Form.objects.all()
-    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'forms': form , 'display': False})
+    form = Event.objects.all()
+    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'events': form , 'display': False})
 
 @login_required
 def sotp(request):
