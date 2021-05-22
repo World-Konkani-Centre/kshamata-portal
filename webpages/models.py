@@ -20,11 +20,11 @@ class Website(models.Model):
         return f'{self.name} Website'
 
 
-class Form(models.Model):
-    name = models.CharField(max_length=50, help_text='Form name')
-    url = models.URLField(help_text='Form URL')
-    deadline = models.CharField(max_length=100, help_text='Enter deadline in human readbale format for ex. 12/2 8:00 PM')
-    description = models.TextField(help_text='A brief description on Form')
+class Event(models.Model):
+    name = models.CharField(max_length=50, help_text='Event name')
+    time = models.CharField(max_length=50, help_text='Event Timings, Leave it blank if not needed', blank=True, null=True)
+    description = models.TextField(blank=True, null=True, help_text='Event Description, Leave it blank if not needed')
+    image = models.ImageField( upload_to='events', help_text='Event Photo',)
 
     def __str__(self):
         return f'{self.name} Form'  
