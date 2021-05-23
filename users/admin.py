@@ -2,20 +2,26 @@ from django.contrib import admin
 from .models import Profile, Team, User
 from django.contrib.auth.admin import UserAdmin
 from csv_export.views import CSVExportView
+from django.utils.html import format_html
 
 
 class UserAdminClass(UserAdmin):
+    @staticmethod
+    def photo(obj):
+        return format_html(
+            '<img src="{}" width="40" />'.format(obj.image.url))
+
     # list to display in admin panel
     actions = ('export_data_csv',)
-    list_display = ('email', 'name', 'batch', 'college_name')
+    list_display = ('email', 'photo', 'name', 'batch', 'college_name')
     # search by following fields
     search_fields = ('email', 'batch', 'name', 'college_name')
+    list_filter = ('batch', 'college_name')
     # cannot be edited
     readonly_fields = ()
 
     # required features that should be overriding the UserAdmin,
     filter_horizontal = ()
-    list_filter = ()
     fieldsets = ()
     def export_data_csv(self, request, queryset):
         view = CSVExportView(queryset=queryset, fields='__all__')
@@ -33,4 +39,13 @@ class TeamAdmin(admin.ModelAdmin):
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    pass
+
+    @staticmethod
+    def user_photo(obj):
+        return format_html(
+            '<img src="{}" width="40" /> <span>{}</span>'.format(obj.user.image.url, obj.user.name))
+
+    search_fields = ('user__email', 'team__name')
+    list_filter = ('role', 'team__name')
+    list_display = ('id', 'user_photo', 'role', 'team')
+    list_display_links = ('id', 'user_photo')
