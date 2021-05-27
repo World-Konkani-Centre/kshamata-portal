@@ -21,7 +21,7 @@ def camp(request):
 
 @login_required
 def schedule(request):
-    return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE', 'display': False})
+    return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE', 'display': True})
 
 @login_required
 def website(request):
