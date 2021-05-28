@@ -6,7 +6,9 @@ from rewards.models import Points, Type
 
 @admin.register(Points)
 class PointsAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'user', 'points')
+    list_display_links = ('id', 'user', 'points')
+    list_filter = ('teams',)
 
 
 @admin.register(Type)
