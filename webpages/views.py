@@ -31,7 +31,7 @@ def website(request):
 @login_required
 def submit(request):
     form = Event.objects.all()
-    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'events': form , 'display': False})
+    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'events': form , 'display': True})
 
 @login_required
 def sotp(request):
