@@ -57,4 +57,4 @@ def leaderboard(request):
         team_points = Team.objects.get(id=request.user.profile.team.id)
 
     return render(request, 'award/leaderboard.html',
-                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points, 'display': False})
+                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points, 'display': True})
