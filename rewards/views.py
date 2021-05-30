@@ -43,7 +43,7 @@ def award_list(request):
     awards = Points.objects.filter(show=True)
     users = awards.filter(team=None)
     teams = awards.filter(user=None)
-    return render(request, 'award/award_list.html', {"teams": teams, 'users': users, 'display': False})
+    return render(request, 'award/award_list.html', {"teams": teams, 'users': users, 'display': True})
 
 
 # show the leaderboard of teams and profiles use points in corresponding models to order
