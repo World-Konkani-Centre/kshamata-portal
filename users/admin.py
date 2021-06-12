@@ -53,4 +53,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Camp)
 class CampAdmin(admin.ModelAdmin):
-    pass
+    actions = None
