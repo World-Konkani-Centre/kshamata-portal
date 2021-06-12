@@ -13,7 +13,7 @@ class Testimonial(models.Model):
 
 
 class Website(models.Model):
-    camp = models.ForeignKey(Camp, blank=True, null=True)
+    camp = models.ForeignKey(Camp, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, help_text='Team name')
     image = models.ImageField(upload_to='team_website', help_text='Upload the team logo')
     url = models.URLField(help_text='Team website URL')
@@ -23,7 +23,7 @@ class Website(models.Model):
 
 
 class Event(models.Model):
-    camp = models.ForeignKey(Camp, blank=True, null=True)
+    camp = models.ForeignKey(Camp, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, help_text='Event name')
     time = models.CharField(max_length=50, help_text='Event Timings, Leave it blank if not needed', blank=True, null=True)
     description = models.TextField(blank=True, null=True, help_text='Event Description, Leave it blank if not needed')

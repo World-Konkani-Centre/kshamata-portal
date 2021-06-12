@@ -112,7 +112,7 @@ class User(AbstractUser):
 
 
 class Team(models.Model):
-    camp = models.ForeignKey(Camp, blank=True, null=True)
+    camp = models.ForeignKey(Camp, blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     team_points = models.IntegerField(default=0)
     url = models.URLField()
