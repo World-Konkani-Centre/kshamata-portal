@@ -42,9 +42,18 @@ def schedule(request, camp):
 
 
 @login_required
-def website(request):
-    websites = Website.objects.all()
-    return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites, 'display': True})
+def website(request, camp):
+    camp_id = return_camp_id(camp)
+    websites = Website.objects.filter(camp=camp_id)
+    display = Visibility.objects.filter(camp=camp_id).first().teams
+    image = Banner.objects.filter(camp=camp_id).first().teams
+    context = {
+        'title': 'TEAMS',
+        'websites': websites,
+        'display': display,
+        'banner': image
+    }
+    return render(request, 'webpages/website.html', context=context)
 
 
 @login_required
