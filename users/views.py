@@ -93,7 +93,7 @@ def my_profile(request):
 def members(request, camp):
     camp_id = return_camp_id(camp)
     p_1 = Profile.objects.filter(role='Committee').order_by('user__name')
-    p_2 = Profile.objects.filter(role='Camper', camp=camp_id).order_by('user__name')
+    p_2 = Profile.objects.filter(role='Camper', camps=camp_id).order_by('user__name')
     image = Banner.objects.filter(camp=camp_id).first().campers
 
     context = {

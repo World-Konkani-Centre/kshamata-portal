@@ -29,7 +29,7 @@
                 {% if not request.user.is_authenticated %}
                   <a href="{% url 'camp-register' %}" class="register">register</a>
                 {% else %}
-                  <a href="{% url 'sotp' %}" class="register">Open</a>
+                  <a href="{% url 'camp-home' camp='sotp' %}" class="register">Open</a>
                 {% endif %}
               </div>
             </div>

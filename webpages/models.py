@@ -67,21 +67,21 @@ class Banner(models.Model):
     events = models.ImageField(upload_to='Banners', verbose_name='Event Page Banner')
 
     def __str__(self):
-        return self.camp
+        return f'{self.camp}'
 
 
 
 class Visibility(models.Model):
     camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
     schedule = models.BooleanField(help_text='Tick if you want to make schedule page visible to all')
-    teams = models.ImageField(help_text='Tick if you want to make teams page visible to all')
-    campers = models.ImageField(help_text='Tick if you want to make campers page visible to all')
-    leaderboard = models.ImageField(help_text='Tick if you want to make leaderboard page visible to all')
-    awards = models.ImageField(help_text='Tick if you want to make awards page visible to all')
-    events = models.ImageField(help_text='Tick if you want to make events page visible to all')
+    teams = models.BooleanField(help_text='Tick if you want to make teams page visible to all')
+    campers = models.BooleanField(help_text='Tick if you want to make campers page visible to all')
+    leaderboard = models.BooleanField(help_text='Tick if you want to make leaderboard page visible to all')
+    awards = models.BooleanField(help_text='Tick if you want to make awards page visible to all')
+    events = models.BooleanField(help_text='Tick if you want to make events page visible to all')
 
     def __str__(self):
-        return self.camp
+        return f'{self.camp}'
 
 DAY = [
     ('DAY 1', 'DAY 1'),
@@ -97,6 +97,6 @@ class Schedule(models.Model):
     event_name = models.CharField(help_text='Write the Event name to display', max_length=500)
 
     def __str__(self):
-        return self.camp
+        return f'{self.camp}'
 
     
