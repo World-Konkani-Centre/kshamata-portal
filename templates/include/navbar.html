@@ -15,7 +15,7 @@
           {% if request.user.is_authenticated %}
           <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'camp' %}">Camps</a></li>
-          <li><a href="{% url 'blog' %}">Wishes</a></li>
+          {% comment %} <li><a href="{% url 'blog' %}">Wishes</a></li> {% endcomment %}
           <li><a href="{% url 'camp-home' camp='sotp' %}">SOTP</a></li>
           <li><a href="{% url 'camp-home' camp='gmcs' %}">GMCS</a></li>
           <li class="drop-down"><a href="{% url 'profile' %}">Profile</a>
