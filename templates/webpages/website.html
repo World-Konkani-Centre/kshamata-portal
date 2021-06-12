@@ -7,7 +7,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <img src="{% static 'assets/img/teams.jpg' %}" class="img-fluid"  loading="lazy" >
+        <img src="{{banner.url}}" class="img-fluid"  loading="lazy" >
     </div><!-- End Breadcrumbs -->
 
     <section class="website services">
@@ -24,7 +24,7 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="10">
 
         {% for page in websites %}
-          <div class="col-lg-3 col-md-4 col-6 d-flex align-items-stretch p-0 m-4">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
             <div class="card text-center" style="background-color: #0079c2">
                 <img src="{{page.image.url}}" class="card-img" alt="...">
                 <div class="card-img-overlay">
@@ -42,7 +42,11 @@
     {% endif %}
 
 
-            {% include 'include/buttons.html' %}
+            {% if camp_id == 1 %}
+              {% include 'include/sotp_buttons.html' %}
+            {% else %}
+              {% include 'include/gmcs_buttons.html' %}
+            {% endif %}
 
       </div>
     </section><!-- End Courses Section -->

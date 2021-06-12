@@ -7,40 +7,52 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <img src="{% static 'assets/img/submit.jpg' %}" class="img-fluid"  loading="lazy" >
+        <img src="{{banner.url}}" class="img-fluid"  loading="lazy" >
     </div><!-- End Breadcrumbs -->
 
-    <section id="services" class="services">
-      <div class="container">
+
+      <!-- ======= Events Section ======= -->
+    <section id="events" class="events services">
+      <div class="container" data-aos="fade-up">
       {% include 'include/heading.html' %}
 
         <div class="section-message">
-          <h2>SUBMIT</h2>
+          <h2>Events</h2>
         </div>
-
-
-      {% if display  or user.is_superuser%}
+        {% if display  or user.is_superuser%}
         <div class="row">
-        {% for form in forms %}
-        <div class="col-lg-6 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-list"></i>
-              <h4><a href="{{form.url}}" target="_blank" class="stretched-link">{{form.name}}</a></h4>
-              <p><strong>Deadline: </strong>{{form.deadline}}</p>
-              <p>{{form.description}}</p>
+
+        {% for event in events %}
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="card">
+              <div class="card-img">
+                <img src="{{event.image.url}}" alt="...">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{event.name}}</h5>
+                {% if event.time %}
+                <p class="fst-italic text-center">{{event.time}}</p>
+                {% endif %}
+                {% if event.description %}
+                <p class="card-text">{{event.description}}</p>
+                {% endif %}
+              </div>
             </div>
           </div>
         {% endfor %}
+
         </div>
       {% else %}
         <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >
       {% endif %}
 
-        {% include 'include/buttons.html' %}
-
+        {% if camp_id == 1 %}
+          {% include 'include/sotp_buttons.html' %}
+        {% else %}
+          {% include 'include/gmcs_buttons.html' %}
+        {% endif %}
       </div>
-    </section>
-
+    </section><!-- End Events Section -->
 
   </main><!-- End #main -->
 {% endblock content %}

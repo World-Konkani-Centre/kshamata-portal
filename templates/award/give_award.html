@@ -3,6 +3,10 @@
 {% load crispy_forms_filters%}
 {% load crispy_forms_tags %} 
 
+{% block custom_css %}
+<link  rel="stylesheet" href="https://www.jqueryscript.net/demo/jQuery-Plugin-For-Filterable-Multiple-Select-with-Checkboxes-fSelect/fSelect.css">
+{% endblock custom_css %}
+
 {% block content %}
 
 
@@ -36,3 +40,12 @@
 
   </main><!-- End #main -->
 {% endblock content %}
+
+{% block custom_js %}
+<script type="text/javascript" src="https://www.jqueryscript.net/demo/jQuery-Plugin-For-Filterable-Multiple-Select-with-Checkboxes-fSelect/fSelect.js"></script>
+<!-- <script>
+$(function() {
+        $('.selectmultiple').fSelect();
+    });
+</script> -->
+{% endblock custom_js %}

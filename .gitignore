@@ -7,7 +7,7 @@ myenv
 venv
 
 configs/config.json
-
+*/migrations/*
 static
 
 

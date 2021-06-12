@@ -1,7 +1,7 @@
 from django.db import models
 from users.models import User
 
-from users.models import Team
+from users.models import Team, Camp
 
 
 class Type(models.Model):
@@ -13,6 +13,7 @@ class Type(models.Model):
 
 
 class Points(models.Model):
+    camp = models.ForeignKey(Camp, default=1,  on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True)
     heading = models.CharField(max_length=100)
