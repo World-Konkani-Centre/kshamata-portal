@@ -4,11 +4,11 @@ from .views import *
 urlpatterns = [
     path('', home, name='index'),
     path('camp/', camp, name='camp'),
-    path('teams', website, name='team-website'),
-    path('events/', submit, name='submit'),
-    path('sotp', sotp, name='sotp'),
+    path('teams/<str:camp>', website, name='team-website'),
+    path('events/<str:camp>', submit, name='submit'),
+    path('camp/<str:camp>', sotp, name='sotp'),
     path('camp-register', camp_register, name='camp-register'),
-    path('schedule/', schedule, name='schedule'),
+    path('schedule/<str:camp>', schedule, name='schedule'),
     path('wishes/<id>', blog_single, name='blog-detail'),
     path('wishes', blog, name='blog'),
 ]

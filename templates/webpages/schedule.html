@@ -7,7 +7,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <img src="{% static 'assets/img/schedule.jpg' %}" class="img-fluid"  loading="lazy" >
+        <img src="{{banner.url}}" class="img-fluid"  loading="lazy" >
     </div><!-- End Breadcrumbs -->
 
     <section id="services" class="services about">
@@ -18,8 +18,6 @@
           <h2>SCHEDULE</h2>
       </div>
 
-
-
       </div>
     </section>
 
@@ -27,112 +25,33 @@
         <!-- ======= Schedule Section ======= -->
     <section id="schedule" class="section-with-bg services">
 
-     
-
       <div class="container" data-aos="fade-up">
       {% if display  or user.is_superuser%}
         <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item">
-            <a class="nav-link " href="#day-1" role="tab" data-toggle="tab">Day 1</a>
+            <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Day 1</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#day-2" role="tab" data-toggle="tab">Day 2</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#day-3" role="tab" data-toggle="tab">Day 3</a>
+            <a class="nav-link" href="#day-3" role="tab" data-toggle="tab">Day 3</a>
           </li>
         </ul>
-{% comment %} 
-        <h3 class="sub-heading">Voluptatem nulla veniam soluta et corrupti consequatur neque eveniet officia. Eius
-          necessitatibus voluptatem quis labore perspiciatis quia.</h3> {% endcomment %}
 
         <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
 
           <!-- Schdule Day 1 -->
-          <div role="tabpanel" class="col-lg-9 tab-pane fade " id="day-1">
-
+          <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+          
+          {% for entry in day_1 %}
             <div class="row schedule-item">
-              <div class="col-md-5"><time>09:45 a.m.</time></div>
+              <div class="col-md-5"><time>{{entry.timings}}</time></div>
               <div class="col-md-6">
-                <h4>Zoom Login Deadline</h4>
-                {% comment %} <p>Fugit voluptas iusto maiores temporibus autem numquam magnam.</p> {% endcomment %}
+                <h4>{{entry.event_name}}</h4>
               </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>10.00 a.m. – 12.00 noon</time></div>
-              <div class="col-md-6">
-                <h4>Inaugural Ceremony</h4>
-                {% comment %} <p>Facere provident incidunt quos voluptas.</p> {% endcomment %}
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>12.00 noon – 12.45 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Team Huddles</h4>
-                {% comment %} <p>Maiores dignissimos neque qui cum accusantium ut sit sint inventore.</p> {% endcomment %}
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>1.00 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Lunch Buddy</h4>
-                {% comment %} <p>Veniam accusantium laborum nihil eos eaque accusantium aspernatur.</p> {% endcomment %}
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>2.00 p.m. – 4.00 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Go Guess Go</h4>
-                {% comment %} <p>Nam ex distinctio voluptatem doloremque suscipit iusto.</p> {% endcomment %}
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>4.00 p.m. – 4.45 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Team Huddles</h4>
-                {% comment %} <p>Eligendi quo eveniet est nobis et ad temporibus odio quo.</p> {% endcomment %}
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>5.00 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Evening Snack Buddy</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>6.00 p.m. – 7.00 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Vision Mapping</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>8.00 p.m. – 8.45 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Team Party</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>9.00 p.m. – 9.30 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>Dinner Buddy</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>9.45 p.m. - 10.30 p.m.</time></div>
-              <div class="col-md-6">
-                <h4>College Connect</h4>
-              </div>
-            </div>
+            </div>          
+          {% endfor %}
 
           </div>
           <!-- End Schdule Day 1 -->
@@ -140,127 +59,37 @@
           <!-- Schdule Day 2 -->
           <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
 
+          {% for entry in day_2 %}
             <div class="row schedule-item">
-              <div class="col-md-5"><time>8.45 a.m.	</time></div>
+              <div class="col-md-5"><time>{{entry.timings}}</time></div>
               <div class="col-md-6">
-                <h4>Breakfast Buddy</h4>
+                <h4>{{entry.event_name}}</h4>
               </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>9.30 a.m. – 1.00 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Talent Galore</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>1.00 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Lunch Buddy</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>2.30 p.m.  - 4.30 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Treasure Hunt</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>4.45 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Evening Snacks Buddy</h4>
-              </div>
-            </div>
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>5.00 p.m. – 5.45 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Team Huddle</h4>
-              </div>
-            </div>
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>6.00 p.m. – 7.30 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>How to approach your College Journey?</h4>
-              </div>
-            </div>
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>8.00 p.m. – 9.30 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Camp Fire on the Cloud</h4>
-              </div>
-            </div>
+            </div>          
+          {% endfor %}
 
 
           </div>
           <!-- End Schdule Day 2 -->
 
           <!-- Schdule Day 3 -->
-          <div role="tabpanel" class="col-lg-9  tab-pane fade show active" id="day-3">
-
-
+          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-3">
+          
+          {% for entry in day_3 %}
             <div class="row schedule-item">
-              <div class="col-md-5"><time>9.30 a.m. – 11.30 p.m.	</time></div>
+              <div class="col-md-5"><time>{{entry.timings}}</time></div>
               <div class="col-md-6">
-                <h4>Detective Agency</h4>
+                <h4>{{entry.event_name}}</h4>
               </div>
-            </div>
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>11.30 a.m. – 12.30 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Team Huddle</h4>
-              </div>
-            </div>
-
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>2.00 p.m. – 3.30 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Skit Prelims</h4>
-              </div>
-            </div>
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>4.00 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Skit Finals</h4>
-              </div>
-            </div>
-
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>5.15 p.m. - 6.00 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Team Hangout</h4>
-              </div>
-            </div>
-
-            <div class="row schedule-item">
-              <div class="col-md-5"><time>6.00 p.m. – 8.00 p.m.	</time></div>
-              <div class="col-md-6">
-                <h4>Grand Finale – SOTP 2021 Valedictory</h4>
-              </div>
-            </div>
+            </div>          
+          {% endfor %}
 
           </div>
-          <!-- End Schdule Day 2 -->
+          <!-- End Schdule Day 3 -->
 
         </div>
       {% else %}
-           <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >    
-  
+           <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >
       {% endif %}
 
       {% include 'include/buttons.html' %}

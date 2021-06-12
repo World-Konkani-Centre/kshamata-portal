@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Testimonial, Website, Event, Post
+from .models import Testimonial, Website, Event, Post, Schedule, Visibility, Banner
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
+from .utils import return_camp_id
 
 
 def home(request):
@@ -21,8 +22,23 @@ def camp(request):
 
 
 @login_required
-def schedule(request):
-    return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE', 'display': True})
+def schedule(request, camp):
+    camp_id = return_camp_id(camp)
+    day_1 = Schedule.objects.filter(day='DAY 1').filter(camp=camp_id)
+    day_2 = Schedule.objects.filter(day='DAY 2').filter(camp=camp_id)
+    day_3 = Schedule.objects.filter(day='DAY 3').filter(camp=camp_id)
+    display = Visibility.objects.filter(camp=camp_id).first().schedule
+    image = Banner.objects.filter(camp=camp_id).first().schedule
+    context = {
+        'title': 'SCHEDULE',
+        'display': display,
+        'banner': image,
+        'day_1': day_1,
+        'day_2': day_2,
+        'day_3': day_3
+    }
+
+    return render(request, 'webpages/schedule.html', context=context)
 
 
 @login_required

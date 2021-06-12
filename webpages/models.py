@@ -66,6 +66,9 @@ class Banner(models.Model):
     awards = models.ImageField(upload_to='Banners', verbose_name='Award Page Banner')
     events = models.ImageField(upload_to='Banners', verbose_name='Event Page Banner')
 
+    def __str__(self):
+        return self.camp
+
 
 
 class Visibility(models.Model):
@@ -76,5 +79,24 @@ class Visibility(models.Model):
     leaderboard = models.ImageField(help_text='Tick if you want to make leaderboard page visible to all')
     awards = models.ImageField(help_text='Tick if you want to make awards page visible to all')
     events = models.ImageField(help_text='Tick if you want to make events page visible to all')
+
+    def __str__(self):
+        return self.camp
+
+DAY = [
+    ('DAY 1', 'DAY 1'),
+    ('DAY 2', 'DAY 2'),
+    ('DAY 3', 'DAY 3')
+]
+
+
+class Schedule(models.Model):
+    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    day = models.CharField(choices=DAY, max_length=500)
+    timings = models.CharField(help_text='For ex. 5.15 p.m. - 6.00 p.m.', max_length=500)
+    event_name = models.CharField(help_text='Write the Event name to display', max_length=500)
+
+    def __str__(self):
+        return self.camp
 
     
