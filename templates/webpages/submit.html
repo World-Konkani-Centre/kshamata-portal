@@ -7,7 +7,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <img src="{% static 'assets/img/submit.jpg' %}" class="img-fluid"  loading="lazy" >
+        <img src="{{banner.url}}" class="img-fluid"  loading="lazy" >
     </div><!-- End Breadcrumbs -->
 
 
@@ -49,38 +49,6 @@
         {% include 'include/buttons.html' %}
       </div>
     </section><!-- End Events Section -->
-
-    {% comment %} <section id="services" class="services">
-      <div class="container">
-      {% include 'include/heading.html' %}
-
-        <div class="section-message">
-          <h2>Events</h2>
-        </div>
-
-
-      {% if display  or user.is_superuser%}
-        <div class="row">
-        {% for form in forms %}
-        <div class="col-lg-6 col-md-6 col-12">
-            <div class="icon-box">
-            <i class="icofont-list"></i>
-              <h4><a href="{{form.url}}" target="_blank" class="stretched-link">{{form.name}}</a></h4>
-              <p><strong>Deadline: </strong>{{form.deadline}}</p>
-              <p>{{form.description}}</p>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-      {% else %}
-        <img src="{% static 'assets/img/coming.jpg' %}" class="img-fluid"  loading="lazy" >
-      {% endif %}
-
-        {% include 'include/buttons.html' %}
-
-      </div>
-    </section> {% endcomment %}
-
 
   </main><!-- End #main -->
 {% endblock content %}

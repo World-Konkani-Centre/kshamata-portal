@@ -48,9 +48,18 @@ def website(request):
 
 
 @login_required
-def submit(request):
-    form = Event.objects.all()
-    return render(request, 'webpages/submit.html', context={'title': 'Events', 'events': form , 'display': True})
+def submit(request, camp):
+    camp_id = return_camp_id(camp)
+    display = Visibility.objects.filter(camp=camp_id).first().events
+    image = Banner.objects.filter(camp=camp_id).first().events
+    form = Event.objects.filter(camp=camp_id)
+    context = {
+        'title': 'Events',
+        'events': form ,
+        'display': display,
+        'banner': image
+    }
+    return render(request, 'webpages/submit.html', context=context)
 
 
 @login_required
