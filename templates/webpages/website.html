@@ -42,7 +42,11 @@
     {% endif %}
 
 
-            {% include 'include/buttons.html' %}
+            {% if camp_id == 1 %}
+              {% include 'include/sotp_buttons.html' %}
+            {% else %}
+              {% include 'include/gmcs_buttons.html' %}
+            {% endif %}
 
       </div>
     </section><!-- End Courses Section -->

@@ -7,7 +7,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <img src="{% static 'assets/img/registration.jpg' %}" class="img-fluid"  loading="lazy" >
+        <img src="{{banner.url}}" class="img-fluid"  loading="lazy" >
     </div><!-- End Breadcrumbs -->
 
     <section id="services" class="services about">
@@ -18,7 +18,14 @@
         <img src="{% static 'assets/img/gif.gif' %}" class="img-fluid"  loading="lazy" >
    
 
-      {% include 'include/buttons.html' %}
+      {% if camp_id == 1 %}
+        {% include 'include/sotp_buttons.html' %}
+      {% else %}
+        {% include 'include/gmcs_buttons.html' %}
+      {% endif %}
+
+
+
 
       </div>
     </section>

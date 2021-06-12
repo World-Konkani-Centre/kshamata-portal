@@ -72,8 +72,15 @@ def submit(request, camp):
 
 
 @login_required
-def sotp(request):
-    return render(request, 'webpages/sotp.html', context={'title': 'SOTP', 'display': False})
+def camp_home(request, camp):
+    camp_id = return_camp_id(camp)
+    image = Banner.objects.filter(camp=camp_id).first().register
+    context = {
+        'title': 'SOTP',
+        'banner': image,
+        'camp_id': camp_id
+    }
+    return render(request, 'webpages/camp_home_page.html', context=context)
 
 
 def camp_register(request):
