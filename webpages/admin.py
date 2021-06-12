@@ -29,12 +29,12 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
-    pass
+    actions = None
 
 
 @admin.register(Visibility)
 class VisibilityAdmin(admin.ModelAdmin):
-    pass
+    actions = None
 
 
 @admin.register(Schedule)

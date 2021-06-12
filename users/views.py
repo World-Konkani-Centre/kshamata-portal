@@ -10,32 +10,6 @@ from .models import Profile
 from webpages.utils import return_camp_id
 from webpages.models import Banner
 
-def email_check(user_cred):
-    regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-    if re.search(regex, user_cred):
-        return True
-    else:
-        return None
-
-
-# login
-def my_login(request):
-    if request.POST:
-        user_cred = request.POST['username']
-        print(user_cred)
-        password = request.POST['password']
-        user = authenticate(request, email=user_cred, password=password)
-        if user is not None:
-            login(request, user)
-            messages.success(request, 'You have logged into your account!!')
-            return redirect('sotp')
-
-        else:
-            messages.error(request, 'Invalid Credential')
-            return redirect(request.META['HTTP_REFERER'])
-    else:
-        return render(request, 'authorization/login.html', {'title': "Login"})
-
 
 # register
 def my_register(request):
