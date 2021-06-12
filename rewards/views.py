@@ -60,7 +60,7 @@ def leaderboard(request, camp):
     camp_id = return_camp_id(camp)
     team_profiles = ""
     team_points = ""
-    profiles = Profile.objects.filter(camp=camp_id).order_by('-points')[:10]
+    profiles = Profile.objects.filter(camps=camp_id).order_by('-points')[:10]
     teams = Team.objects.filter(camp=camp_id).order_by("-team_points")[:10]
     if request.user.profile.team:
         team_profiles = Profile.objects.filter(team=request.user.profile.team).order_by('-points')
