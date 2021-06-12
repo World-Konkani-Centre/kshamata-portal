@@ -15,23 +15,28 @@ def home(request):
     }
     return render(request, 'webpages/home.html', context=context)
 
+
 @login_required
 def camp(request):
-    return render(request, 'webpages/camp.html', context={'title': 'LEADERSHIP EXPERIENCES'})
+    return render(request, 'webpages/camp.html', context={'title': 'KSHAMATA CAMPS'})
+
 
 @login_required
 def schedule(request):
     return render(request, 'webpages/schedule.html', context={'title': 'SCHEDULE', 'display': True})
+
 
 @login_required
 def website(request):
     websites = Website.objects.all()
     return render(request, 'webpages/website.html', context={'title': 'TEAMS', 'websites': websites, 'display': True})
 
+
 @login_required
 def submit(request):
     form = Event.objects.all()
-    return render(request, 'webpages/submit.html', context={'title': 'SUBMIT', 'events': form , 'display': True})
+    return render(request, 'webpages/submit.html', context={'title': 'Events', 'events': form , 'display': True})
+
 
 @login_required
 def sotp(request):

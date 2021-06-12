@@ -54,3 +54,27 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Comment"
+
+
+class Banner(models.Model):
+    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    register = models.ImageField(upload_to='Banners', verbose_name='Register Page Banner')
+    schedule = models.ImageField(upload_to='Banners', verbose_name='Schedule Page Banner')
+    teams = models.ImageField(upload_to='Banners', verbose_name='Team Page Banner')
+    campers = models.ImageField(upload_to='Banners', verbose_name='Campers Page Banner')
+    leaderboard = models.ImageField(upload_to='Banners', verbose_name='Leaderboard Page Banner')
+    awards = models.ImageField(upload_to='Banners', verbose_name='Award Page Banner')
+    events = models.ImageField(upload_to='Banners', verbose_name='Event Page Banner')
+
+
+
+class Visibility(models.Model):
+    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    schedule = models.BooleanField(help_text='Tick if you want to make schedule page visible to all')
+    teams = models.ImageField(help_text='Tick if you want to make teams page visible to all')
+    campers = models.ImageField(help_text='Tick if you want to make campers page visible to all')
+    leaderboard = models.ImageField(help_text='Tick if you want to make leaderboard page visible to all')
+    awards = models.ImageField(help_text='Tick if you want to make awards page visible to all')
+    events = models.ImageField(help_text='Tick if you want to make events page visible to all')
+
+    
