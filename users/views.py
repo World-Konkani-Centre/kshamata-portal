@@ -1,6 +1,6 @@
 import re
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from users.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm
@@ -12,7 +12,8 @@ from webpages.models import Banner
 
 
 # register
-def my_register(request):
+def my_register(request, camp):
+    camp_id = return_camp_id(camp)
     if request.POST:
         form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
@@ -20,12 +21,13 @@ def my_register(request):
             messages.success(request,
                              f'You have successfully registered for SOTP 2021. You can login now with your email: {username}')
             form.save()
+            form.instance.profile.camps.add(camp_id)
             return redirect('login')
     else:
         form = UserRegisterForm()
     context = {
         'form': form,
-        'title': 'Register'
+        'title': f'{camp.upper()} Register'
     }
     return render(request, 'authorization/register.html', context)
 
