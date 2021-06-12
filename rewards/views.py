@@ -1,16 +1,13 @@
-from django.contrib.auth.models import User
-from django.core.exceptions import PermissionDenied
-from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, redirect
 
-from users.models import Profile, Team, User
+from users.models import Profile, Team
 from .forms import MultiBadgeForm
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-
 from .models import Points
+from webpages.models import Banner, Visibility
+from webpages.utils import return_camp_id
 
 
 @login_required
@@ -39,22 +36,48 @@ def give_award(request):
 
 
 # display the list of points given including only top 3
-def award_list(request):
-    awards = Points.objects.filter(show=True)
+def award_list(request, camp):
+    camp_id = return_camp_id(camp)
+    awards = Points.objects.filter(show=True, camp=camp_id)
     users = awards.filter(team=None)
     teams = awards.filter(user=None)
-    return render(request, 'award/award_list.html', {"teams": teams, 'users': users, 'display': True})
+    display = Visibility.objects.filter(camp=camp_id).first().awards
+    image = Banner.objects.filter(camp=camp_id).first().awards
+
+    context = {
+        "teams": teams,
+        'users': users,
+        'display': display,
+        'banner': image, 
+        'camp_id': camp_id,
+        'title': 'AWARD LIST'
+    }
+    return render(request, 'award/award_list.html', context=context)
 
 
 # show the leaderboard of teams and profiles use points in corresponding models to order
-def leaderboard(request):
+def leaderboard(request, camp):
+    camp_id = return_camp_id(camp)
     team_profiles = ""
     team_points = ""
-    profiles = Profile.objects.filter().order_by('-points')[:10]
-    teams = Team.objects.filter().order_by("-team_points")[:10]
+    profiles = Profile.objects.filter(camp=camp_id).order_by('-points')[:10]
+    teams = Team.objects.filter(camp=camp_id).order_by("-team_points")[:10]
     if request.user.profile.team:
         team_profiles = Profile.objects.filter(team=request.user.profile.team).order_by('-points')
         team_points = Team.objects.get(id=request.user.profile.team.id)
 
-    return render(request, 'award/leaderboard.html',
-                  {'profiles': profiles, 'teams': teams, 'team_profiles': team_profiles, 'team_details': team_points, 'display': True})
+    display = Visibility.objects.filter(camp=camp_id).first().leaderboard
+    image = Banner.objects.filter(camp=camp_id).first().leaderboard
+
+    context = {
+        'profiles': profiles,
+        'teams': teams,
+        'team_profiles': team_profiles,
+        'team_details': team_points,
+        'display': display,
+        'banner': image,
+        'camp_id': camp_id,
+        'title': 'LEADERBOARD'
+    }
+
+    return render(request, 'award/leaderboard.html', context=context)
