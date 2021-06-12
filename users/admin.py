@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Profile, Team, User
+from .models import Profile, Team, User, Camp
 from django.contrib.auth.admin import UserAdmin
 from csv_export.views import CSVExportView
 from django.utils.html import format_html
@@ -49,3 +49,8 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ('role', 'team__name')
     list_display = ('id', 'user_photo', 'role', 'team')
     list_display_links = ('id', 'user_photo')
+
+
+@admin.register(Camp)
+class CampAdmin(admin.ModelAdmin):
+    pass
