@@ -35,7 +35,8 @@ def schedule(request, camp):
         'banner': image,
         'day_1': day_1,
         'day_2': day_2,
-        'day_3': day_3
+        'day_3': day_3,
+        'camp_id': camp_id
     }
 
     return render(request, 'webpages/schedule.html', context=context)
@@ -51,7 +52,8 @@ def website(request, camp):
         'title': 'TEAMS',
         'websites': websites,
         'display': display,
-        'banner': image
+        'banner': image,
+        'camp_id': camp_id
     }
     return render(request, 'webpages/website.html', context=context)
 
@@ -66,7 +68,8 @@ def submit(request, camp):
         'title': 'Events',
         'events': form ,
         'display': display,
-        'banner': image
+        'banner': image,
+        'camp_id': camp_id
     }
     return render(request, 'webpages/submit.html', context=context)
 

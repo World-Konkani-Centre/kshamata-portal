@@ -67,7 +67,6 @@ class User(AbstractUser):
     ]
     username = models.CharField(max_length=100, unique=False, null=True, blank=True)
     batch = models.IntegerField(null=True)
-    camps = models.ManyToManyField(Camp, blank=True)
     gender = models.CharField(max_length=10, choices=ROLE_CHOICES, default='Male', null=True)
     name = models.CharField(max_length=30, null=True)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
@@ -130,6 +129,7 @@ ROLE_CHOICES2 = [
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    camps = models.ManyToManyField(Camp, blank=True, default=1)
     role = models.CharField(max_length=30, choices=ROLE_CHOICES2, default='Camper', null=True)
     team = models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True)
     points = models.IntegerField(default=0)

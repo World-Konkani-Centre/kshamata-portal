@@ -8,7 +8,7 @@
 
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs">
-            <img src="{% static 'assets/img/members.jpg' %}" class="img-fluid" loading="lazy">
+            <img src="{{banner.url}}" class="img-fluid" loading="lazy">
         </div><!-- End Breadcrumbs -->
 
         <!-- ======= Trainers Section ======= -->
@@ -21,7 +21,6 @@
                     <h2>CAMPERS</h2>
                 </div>
 
-                {% comment %} <div class="row" data-aos="zoom-in" data-aos-delay="100"> {% endcomment %}
                 <section id="schedule" class="section-with-bg services">
                     <div class="container" data-aos="fade-up">
 
@@ -82,7 +81,6 @@
 
                     </div>
                 </section>
-                {% comment %} </div> {% endcomment %}
                 {% if camp_id == 1 %}
                 {% include 'include/sotp_buttons.html' %}
                 {% else %}

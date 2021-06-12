@@ -7,7 +7,8 @@ from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 
 from .models import Profile
-
+from webpages.utils import return_camp_id
+from webpages.models import Banner
 
 def email_check(user_cred):
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
@@ -89,7 +90,16 @@ def my_profile(request):
 
 # show all them members in the profile
 @login_required
-def members(request):
+def members(request, camp):
+    camp_id = return_camp_id(camp)
     p_1 = Profile.objects.filter(role='Committee').order_by('user__name')
-    p_2 = Profile.objects.filter(role='Camper').order_by('user__name')
-    return render(request, 'profile/members.html', context={'committee': p_1, 'campers': p_2, 'display': False})
+    p_2 = Profile.objects.filter(role='Camper', camp=camp_id).order_by('user__name')
+    image = Banner.objects.filter(camp=camp_id).first().campers
+
+    context = {
+        'committee': p_1,
+        'campers': p_2,
+        'banner': image,
+        'camp_id': camp_id
+    }
+    return render(request, 'profile/members.html', context=context)
