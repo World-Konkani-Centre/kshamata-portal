@@ -1,4 +1,3 @@
-from users.views import my_login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Testimonial, Website, Event, Post
