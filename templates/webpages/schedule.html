@@ -12,7 +12,11 @@
 
     <section id="services" class="services about">
       <div class="container">
-      {% include 'include/heading.html' %}
+            {% if camp_id == 1 %}
+              {% include 'include/sotp_heading.html' %}
+            {% else %}
+              {% include 'include/gmcs_heading.html' %}
+            {% endif %}
 
       <div class="section-message">
           <h2>SCHEDULE</h2>

@@ -57,7 +57,7 @@ class Comment(models.Model):
 
 
 class Banner(models.Model):
-    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    camp = models.OneToOneField(Camp, on_delete=models.CASCADE)
     register = models.ImageField(upload_to='Banners', verbose_name='Register Page Banner')
     schedule = models.ImageField(upload_to='Banners', verbose_name='Schedule Page Banner')
     teams = models.ImageField(upload_to='Banners', verbose_name='Team Page Banner')
@@ -72,7 +72,7 @@ class Banner(models.Model):
 
 
 class Registration(models.Model):
-    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    camp = models.OneToOneField(Camp, on_delete=models.CASCADE)
     heading = models.CharField(max_length=50)
     sub_heading = models.CharField(max_length=300)
     is_open = models.BooleanField(default=False, help_text='Tick the option if you want to make registration open')
@@ -89,7 +89,7 @@ class Registration(models.Model):
 
 
 class Visibility(models.Model):
-    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    camp = models.OneToOneField(Camp, on_delete=models.CASCADE)
     schedule = models.BooleanField(help_text='Tick if you want to make schedule page visible to all')
     teams = models.BooleanField(help_text='Tick if you want to make teams page visible to all')
     campers = models.BooleanField(help_text='Tick if you want to make campers page visible to all')

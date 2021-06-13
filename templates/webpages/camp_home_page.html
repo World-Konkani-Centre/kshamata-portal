@@ -12,20 +12,17 @@
 
     <section id="services" class="services about">
       <div class="container">
-        {% include 'include/heading.html' %}
 
-  
-        <img src="{% static 'assets/img/gif.gif' %}" class="img-fluid"  loading="lazy" >
-   
 
       {% if camp_id == 1 %}
+        {% include 'include/sotp_heading.html' %}
+        <img src="{% static 'assets/img/gif.gif' %}" class="img-fluid"  loading="lazy" >
         {% include 'include/sotp_buttons.html' %}
       {% else %}
+        {% include 'include/gmcs_heading.html' %}
+        <img src="{% static 'assets/img/gmcs.gif' %}" class="img-fluid"  loading="lazy" >
         {% include 'include/gmcs_buttons.html' %}
       {% endif %}
-
-
-
 
       </div>
     </section>

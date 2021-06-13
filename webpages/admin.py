@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Testimonial, Website, Event, Post, Comment, Banner, Visibility, Schedule, Registration
-# Register your models here.
+from .models import Testimonial, Website, Event, Banner, Visibility, Schedule, Registration
+
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
@@ -17,16 +17,6 @@ class EventAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
-    pass
-
-
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
     actions = None
@@ -35,6 +25,9 @@ class BannerAdmin(admin.ModelAdmin):
 @admin.register(Visibility)
 class VisibilityAdmin(admin.ModelAdmin):
     actions = None
+    list_display = ('id', 'camp', 'schedule', 'teams', 'campers', 'leaderboard', 'awards', 'events')
+    list_editable = ('schedule', 'teams', 'campers', 'leaderboard', 'awards', 'events')
+    list_display_links = ('id', 'camp')
 
 
 @admin.register(Registration)
