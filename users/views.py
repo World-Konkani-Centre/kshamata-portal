@@ -14,6 +14,8 @@ from webpages.models import Banner, Registration
 # register
 def my_register(request, camp):
     camp_id = return_camp_id(camp)
+    is_open = Registration.objects.filter(camp=camp_id).first()
+    image = Banner.objects.filter(camp=camp_id).first().campers
     if request.user.is_authenticated:
         messages.info(request, f'Your already registered to our Website, You can check your enrolled camp.')
         return redirect('camp-registration')
@@ -28,8 +30,7 @@ def my_register(request, camp):
             return redirect('login')
     else:
         form = UserRegisterForm()
-        is_open = Registration.objects.filter(camp=camp_id).first()
-        image = Banner.objects.filter(camp=camp_id).first().campers
+
     context = {
         'form': form,
         'title': f'{camp.upper()} Register',
