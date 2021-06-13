@@ -9,14 +9,14 @@ class UserAdminClass(UserAdmin):
     @staticmethod
     def photo(obj):
         return format_html(
-            '<img src="{}" width="40" />'.format(obj.image.url))
+            '<img src="{}" width="50px" />'.format(obj.image.url))
 
     # list to display in admin panel
     actions = ('export_data_csv',)
     list_display = ('email', 'photo', 'name', 'batch', 'college_name')
     # search by following fields
     search_fields = ('email', 'batch', 'name', 'college_name')
-    list_filter = ('batch', 'college_name')
+    list_filter = ('profile__camps', 'batch', )
     # cannot be edited
     readonly_fields = ()
 
@@ -34,7 +34,7 @@ admin.site.register(User, UserAdminClass)
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('camp', )
 
 
 @admin.register(Profile)
@@ -46,7 +46,7 @@ class ProfileAdmin(admin.ModelAdmin):
             '<img src="{}" width="40" /> <span>{}</span>'.format(obj.user.image.url, obj.user.name))
 
     search_fields = ('user__email', 'team__name')
-    list_filter = ('role', 'team__name')
+    list_filter = ('camps', 'role', 'team__name')
     list_display = ('id', 'user_photo', 'role', 'team')
     list_display_links = ('id', 'user_photo')
 

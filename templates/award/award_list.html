@@ -14,7 +14,11 @@
     <!-- ======= Trainers Section ======= -->
     <section id="trainers" class="trainers services">
       <div class="container" data-aos="fade-up">
-      {% include 'include/heading.html' %}
+            {% if camp_id == 1 %}
+              {% include 'include/sotp_heading.html' %}
+            {% else %}
+              {% include 'include/gmcs_heading.html' %}
+            {% endif %}
         <div class="section-message">
           <h2>AWARDS</h2>
         </div>

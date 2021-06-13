@@ -50,7 +50,7 @@ def award_list(request, camp):
         'display': display,
         'banner': image, 
         'camp_id': camp_id,
-        'title': 'AWARD LIST'
+        'title': f'{camp.upper()} AWARD LIST'
     }
     return render(request, 'award/award_list.html', context=context)
 
@@ -77,7 +77,7 @@ def leaderboard(request, camp):
         'display': display,
         'banner': image,
         'camp_id': camp_id,
-        'title': 'LEADERBOARD'
+        'title': f'{camp.upper()} LEADERBOARD'
     }
 
     return render(request, 'award/leaderboard.html', context=context)

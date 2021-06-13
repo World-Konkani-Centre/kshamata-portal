@@ -61,7 +61,7 @@
                 {% if not request.user.is_authenticated %}
                   <a href="{% url 'camp-register' %}" class="register">register</a>
                 {% else %}
-                  <button id="register" onclick="show_toast()"  class="btn register">register</button>
+                  <a href="{% url 'camp-home' camp='gmcs' %}" class="register">Open</a>
                 {% endif %}
               </div>
             </div>

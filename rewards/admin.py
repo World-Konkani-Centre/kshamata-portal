@@ -8,7 +8,7 @@ from rewards.models import Points, Type
 class PointsAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'points', 'heading', 'type')
     list_display_links = ('id', 'user', 'points')
-    list_filter = ('team', 'type')
+    list_filter = ('camp', 'team', 'type')
     search_fields = ('user', 'team', 'heading')
 
 
