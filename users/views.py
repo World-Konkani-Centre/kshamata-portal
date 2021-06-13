@@ -3,17 +3,20 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from users.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm
+from .forms import ProfileUpdateForm, UserUpdateForm, UserRegisterForm, CampsUpdateForm
 from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 from webpages.utils import return_camp_id
-from webpages.models import Banner
+from webpages.models import Banner, Registration
 
 
 # register
 def my_register(request, camp):
     camp_id = return_camp_id(camp)
+    if request.user.is_authenticated:
+        messages.info(request, f'Your already registered to our Website, You can check your enrolled camp.')
+        return redirect('camp-registration')
     if request.POST:
         form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
@@ -25,12 +28,31 @@ def my_register(request, camp):
             return redirect('login')
     else:
         form = UserRegisterForm()
+        is_open = Registration.objects.filter(camp=camp_id).first()
+        image = Banner.objects.filter(camp=camp_id).first().campers
     context = {
         'form': form,
-        'title': f'{camp.upper()} Register'
+        'title': f'{camp.upper()} Register',
+        'camp': is_open,
+        'banner': image
     }
     return render(request, 'authorization/register.html', context)
 
+
+@login_required
+def camp_registration(request):
+    form = CampsUpdateForm(instance=request.user.profile)
+    if request.POST:
+        form = CampsUpdateForm(request.POST, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your Camp preference is successfully updated')
+            return redirect('index')
+    context = {
+        'form': form,
+        'title': 'Camp Update'
+    }
+    return render(request, 'profile/camps-registered.html', context)
 
 # logout
 def my_logout(request):
@@ -69,7 +91,7 @@ def my_profile(request):
 def members(request, camp):
     camp_id = return_camp_id(camp)
     p_1 = Profile.objects.filter(role='Committee').order_by('user__name')
-    p_2 = Profile.objects.filter(role='Camper', camps=camp_id).order_by('user__name')
+    p_2 = Profile.objects.filter(camps=camp_id).filter(role='Camper').order_by('user__name')
     image = Banner.objects.filter(camp=camp_id).first().campers
 
     context = {

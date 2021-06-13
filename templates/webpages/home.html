@@ -2,18 +2,11 @@
 {% load static %}
 
 {% block content %}
-  {% comment %} <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex justify-content-center align-items-center">
-    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-    </div>
-  </section><!-- End Hero --> {% endcomment %}
 
     <main id="main">
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-    <a href="{% static 'assets/img/hero-bg.jpg' %}" class="venobox" data-gall="venue-gallery">
         <img src="{% static 'assets/img/hero-bg.jpg' %}" class="img-fluid"  loading="lazy" >
-    </a>
     </div><!-- End Breadcrumbs -->
     
     <!-- ======= About Section ======= -->
@@ -58,18 +51,22 @@
       </div>
     </section><!-- End Counts Section -->
 
+  {% for data in registration %}
     <!-- ======= Cta Section ======= -->
     <section id="cta" class="cta">
       <div class="container" data-aos="fade-in">
 
         <div class="text-center">
-          <h3>CAMP REGISTRATION - SOTP 2021</h3>
-          <p>Camp Registration for SOTP 2021 is open now.</p>
-          <a class="cta-btn" href="{% url 'register' camp='sotp' %}">REGISTER NOW</a>
+          <h3>{{data.camp}}</h3>
+          <p>{{data.sub_heading}}</p>
+          <a class="cta-btn" href="{{data.registration_link}}">REGISTER NOW</a>
         </div>
 
       </div>
     </section><!-- End Cta Section -->
+
+  {% endfor %}
+
 
 
         <!-- ======= Venue Section ======= -->

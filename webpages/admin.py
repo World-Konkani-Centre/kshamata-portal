@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Testimonial, Website, Event, Post, Comment, Banner, Visibility, Schedule
+from .models import Testimonial, Website, Event, Post, Comment, Banner, Visibility, Schedule, Registration
 # Register your models here.
 
 @admin.register(Testimonial)
@@ -34,6 +34,11 @@ class BannerAdmin(admin.ModelAdmin):
 
 @admin.register(Visibility)
 class VisibilityAdmin(admin.ModelAdmin):
+    actions = None
+
+
+@admin.register(Registration)
+class RegistrationAdmin(admin.ModelAdmin):
     actions = None
 
 

@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from .views import *
 from django.contrib.auth import views as auth_views
@@ -5,6 +6,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('register/<str:camp>', my_register, name='register'),
+    path('registered-camps/', camp_registration, name='camp-registration'),
     path('logout/', my_logout, name='logout'),
     path('login/', auth_views.LoginView.as_view(template_name='authorization/login.html'), name='login'),
     path('password-reset/', auth_views.PasswordResetView.as_view(template_name='authorization/password_reset.html'),

@@ -13,26 +13,27 @@
     </div><!-- End Breadcrumbs -->
 
         <!-- ======= Trainers Section ======= -->
-    <section id="trainers" class="trainers">
+    <section>
       <div class="container" data-aos="fade-up">
 
         <div class="section-message">
-          <h2>Login</h2>
+          <h2>Please Select the camps that you want to register</h2>
+          <p>Please note if you are here for GMCS camp, please select that option only, don't select extra options.</p>
         </div>
 
 
   <div class="col-lg-8 offset-lg-2 col-12">
+  
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-danger btn-block" type="submit">Login</button>
+                <button class="btn btn-danger btn-block" type="submit">Update your Camp preferance</button>
             </div>
         </form>
 
-      <p class="section-message">Forgot your password? <a href="{% url 'password_reset' %}">I can help</a></p>
 
   </div>
 
