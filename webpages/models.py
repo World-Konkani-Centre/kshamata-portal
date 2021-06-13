@@ -71,6 +71,19 @@ class Banner(models.Model):
 
 
 
+class Registration(models.Model):
+    camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
+    heading = models.CharField(max_length=50)
+    sub_heading = models.CharField(max_length=300)
+    is_open = models.BooleanField(default=False, help_text='Tick the option if you want to make registration open')
+    message = models.CharField(max_length=400, help_text='Text to be dispalyed if User opens camp registration page and registration is already closed.', null=True, blank=True)
+
+
+    def __str__(self):
+        return f'{self.camp} Registration'
+
+
+
 class Visibility(models.Model):
     camp = models.ForeignKey(Camp, on_delete=models.CASCADE)
     schedule = models.BooleanField(help_text='Tick if you want to make schedule page visible to all')
