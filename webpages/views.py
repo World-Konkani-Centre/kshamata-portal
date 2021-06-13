@@ -31,7 +31,7 @@ def schedule(request, camp):
     display = Visibility.objects.filter(camp=camp_id).first().schedule
     image = Banner.objects.filter(camp=camp_id).first().schedule
     context = {
-        'title': 'SCHEDULE',
+        'title': f'{camp.upper()} SCHEDULE',
         'display': display,
         'banner': image,
         'day_1': day_1,
@@ -50,7 +50,7 @@ def website(request, camp):
     display = Visibility.objects.filter(camp=camp_id).first().teams
     image = Banner.objects.filter(camp=camp_id).first().teams
     context = {
-        'title': 'TEAMS',
+        'title': f'{camp.upper()} TEAMS',
         'websites': websites,
         'display': display,
         'banner': image,
@@ -66,7 +66,7 @@ def submit(request, camp):
     image = Banner.objects.filter(camp=camp_id).first().events
     form = Event.objects.filter(camp=camp_id)
     context = {
-        'title': 'Events',
+        'title': f'{camp.upper()} Events',
         'events': form ,
         'display': display,
         'banner': image,
@@ -80,7 +80,7 @@ def camp_home(request, camp):
     camp_id = return_camp_id(camp)
     image = Banner.objects.filter(camp=camp_id).first().register
     context = {
-        'title': 'SOTP',
+        'title': f'{camp.upper()} 2021 EXPERIENCE HUB',
         'banner': image,
         'camp_id': camp_id
     }
