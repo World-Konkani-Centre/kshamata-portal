@@ -9,6 +9,5 @@ urlpatterns = [
     path('camp/<str:camp>', camp_home, name='camp-home'),
     path('camp-register', camp_register, name='camp-register'),
     path('schedule/<str:camp>', schedule, name='schedule'), 
-    # path('wishes/<id>', blog_single, name='blog-detail'),
-    # path('wishes', blog, name='blog'),
+
 ]

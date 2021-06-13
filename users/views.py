@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 from webpages.utils import return_camp_id
-from webpages.models import Banner
+from webpages.models import Banner, Registration
 
 
 # register
@@ -28,9 +28,13 @@ def my_register(request, camp):
             return redirect('login')
     else:
         form = UserRegisterForm()
+        is_open = Registration.objects.filter(camp=camp_id).first()
+        image = Banner.objects.filter(camp=camp_id).first().campers
     context = {
         'form': form,
-        'title': f'{camp.upper()} Register'
+        'title': f'{camp.upper()} Register',
+        'camp': is_open,
+        'banner': image
     }
     return render(request, 'authorization/register.html', context)
 

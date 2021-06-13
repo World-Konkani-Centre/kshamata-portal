@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Testimonial, Website, Event, Post, Schedule, Visibility, Banner
+from .models import Testimonial, Website, Event, Post, Schedule, Visibility, Banner, Registration
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 from .utils import return_camp_id
@@ -8,9 +8,10 @@ from .utils import return_camp_id
 
 def home(request):
     testimonial = Testimonial.objects.all()
-
+    registration = Registration.objects.filter(is_open=True)
     context = {
         'testimonial': testimonial,
+        'registration': registration,
         'title': 'HOME'
     }
     return render(request, 'webpages/home.html', context=context)

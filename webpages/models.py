@@ -76,8 +76,12 @@ class Registration(models.Model):
     heading = models.CharField(max_length=50)
     sub_heading = models.CharField(max_length=300)
     is_open = models.BooleanField(default=False, help_text='Tick the option if you want to make registration open')
-    message = models.CharField(max_length=400, help_text='Text to be dispalyed if User opens camp registration page and registration is already closed.', null=True, blank=True)
+    error_image = models.ImageField(help_text='Text to be dispalyed if User opens camp registration page and registration is already closed.', null=True, blank=True)
 
+
+    def registration_link(self):
+        camp = str(self.camp.get_id_display())
+        return f'register/{camp.lower()}'
 
     def __str__(self):
         return f'{self.camp} Registration'
