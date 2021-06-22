@@ -10,6 +10,15 @@
   <link href="{% static 'assets/img/favicon.png' %} " rel="icon">
   <link href="{% static 'assets/img/apple-touch-icon.png' %} " rel="apple-touch-icon">
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD9RVB79P1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DD9RVB79P1');
+  </script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   {% include 'include/style.html' %}
