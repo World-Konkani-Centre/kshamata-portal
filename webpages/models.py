@@ -1,5 +1,6 @@
 from django.db import models
 from users.models import User, Camp
+from ckeditor.fields import RichTextField
 
 
 class Testimonial(models.Model):
@@ -26,7 +27,7 @@ class Event(models.Model):
     camp = models.ForeignKey(Camp, default=1, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, help_text='Event name')
     time = models.CharField(max_length=50, help_text='Event Timings, Leave it blank if not needed', blank=True, null=True)
-    description = models.TextField(blank=True, null=True, help_text='Event Description, Leave it blank if not needed')
+    description = RichTextField(blank=True, null=True, help_text='Event Description, Leave it blank if not needed')
     image = models.ImageField( upload_to='events', help_text='Event Photo',)
 
     def __str__(self):
