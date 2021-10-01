@@ -1,7 +1,7 @@
 # sushiksha-fest-site
 
 <p align="center"> 
- <img src="https://vkssfalumni.com/wp-content/uploads/2016/11/sushikshalogo-300x300.png" alt="Sushiksha-lOGO" border="0" width=300 height=300/>&nbsp; </a></p>
+ <img src="https://i.ibb.co/h8CB6VR/logoo.png" alt="Sushiksha-lOGO" border="0" width=700/>&nbsp; </a></p>
 
 <!-- Repo detail Stickers -->
 <p align="center">                          
@@ -25,8 +25,6 @@
 
 <!-- Heads -->
   <p align="center">
-    <br />
-    <br />
     <br />
     <a href="https://kshamata.konkanischolarship.com/"target="_blank" rel="noopener noreferrer">View a Live Demo</a>
     · 
