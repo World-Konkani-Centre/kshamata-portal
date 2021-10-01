@@ -1,5 +1,28 @@
 # sushiksha-fest-site
 
+<p align="center"> 
+ <img src="https://vkssfalumni.com/wp-content/uploads/2016/11/sushikshalogo-300x300.png" alt="Sushiksha-lOGO" border="0" width=300 height=300/>&nbsp; </a></p>
+
+<!-- Repo detail Stickers -->
+<p align="center">                          
+    <a href="https://github.com/18praneeth/kshamata/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/18praneeth/kshamata?style=for-the-badge"></a>
+    <a href="https://github.com/18praneeth/kshamata/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/18praneeth/kshamata?style=for-the-badge"></a>
+    <a href="https://github.com/18praneeth/kshamata/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/18praneeth/kshamata?style=for-the-badge"></a>
+</p>
+
+<p class="text-center mb-3" align="center">
+<a href="https://sushiksha.konkanischolarship.com/"><img src="https://forthebadge.com/images/badges/made-with-python.svg" border="0" title="Made with Python" /></a>
+</p>
+<!-- Logos -->
+<br>
+<p align="center">
+  <a href="https://github.com/18praneeth/kshamata/blob/main/README.md">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png" alt="Logo" width="80" height="80"> &nbsp;
+    <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>  
+    <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="100" height="80">  
+  </a>
+<br>
+
 <!-- Heads -->
   <p align="center">
     <br />
@@ -11,24 +34,6 @@
     ·
     <a href="https://github.com/18praneeth/kshamata/issues/new">Request a Feature</a>
   </p>
-
-<!-- Logos -->
-<br>
-<p align="center">
-  <a href="https://github.com/18praneeth/kshamata/blob/main/README.md">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png" alt="Logo" width="80" height="80"> &nbsp;
-    <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangopowered126x54.gif" border="0" alt="Powered by Django." title="Powered by Django." /></a>  
-    <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo-shadow.png" alt="Bootstrap logo" width="100" height="80">  
-  </a>
-<br>
-<br>
-
-<!-- Repo detail Stickers -->
-<p align="center">                          
-    <a href="https://github.com/18praneeth/kshamata/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/18praneeth/kshamata?style=for-the-badge"></a>
-    <a href="https://github.com/18praneeth/kshamata/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/18praneeth/kshamata?style=for-the-badge"></a>
-    <a href="https://github.com/18praneeth/kshamata/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/18praneeth/kshamata?style=for-the-badge"></a>
-</p>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
