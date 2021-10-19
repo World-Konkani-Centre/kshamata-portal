@@ -1,7 +1,7 @@
 # sushiksha-fest-site
 
 <p align="center"> 
- <img src="https://i.ibb.co/h8CB6VR/logoo.png" alt="Sushiksha-lOGO" border="0" width=700/>&nbsp; </a></p>
+ <img src="https://i.ibb.co/h8CB6VR/logoo.png" alt="Sushiksha-lOGO" border="0" width=600/>&nbsp; </a></p>
 
 <!-- Repo detail Stickers -->
 <p align="center">                          
@@ -9,6 +9,7 @@
     <a href="https://github.com/18praneeth/kshamata/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/18praneeth/kshamata?style=for-the-badge"></a>
     <a href="https://github.com/18praneeth/kshamata/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/18praneeth/kshamata?style=for-the-badge"></a>
 </p>
+
 
 <p class="text-center mb-3" align="center">
 <a href="https://sushiksha.konkanischolarship.com/"><img src="https://forthebadge.com/images/badges/made-with-python.svg" border="0" title="Made with Python" /></a>
@@ -44,13 +45,13 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#Getting-started">Getting Started</a>
       <ul>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#development">Development</a></li>
+        <li><a href="#INSTALLATION">Installation</a></li>
+        <li><a href="#DEVELOPMENT">Development</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Contributing / Adding features</a></li>
+    <li><a href="#CONTRIBUTING">Contributing / Adding features</a></li>
   </ol>
 </details>
 
@@ -75,7 +76,7 @@
 1. Fork and Clone
     <ol>
     <li>Fork the <b>Kshamata</b> Repository</li>
-    <li>Clone the repo to your local system.</li>
+    <li>Clone the repo to your local system</li>
     </ol>
 
 2. Create a Virtual Environment for the Project
@@ -137,3 +138,5 @@
    Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change in the project.
 
 <br>
+
+<h1 align="cnter">__ THANK YOU __</h1>
