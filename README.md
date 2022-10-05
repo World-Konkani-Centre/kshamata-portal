@@ -146,4 +146,4 @@
 
 <br>
 
-<h1 align="center">__ THANK YOU __</h1>
+<h1 align="center">🙏THANK YOU 🙏</h1>
