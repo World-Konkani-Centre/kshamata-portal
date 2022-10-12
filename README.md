@@ -136,7 +136,7 @@
 
 ## Contributing
    Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change in the project.
-   Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+   Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Here are the steps to contribute:
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
